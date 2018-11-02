@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>技术博客，随笔，技术沉淀总结</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-11-02T05:19:17.894Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>John KANG</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hello world,this is my blog</title>
+    <link href="http://yoursite.com/2018/10/31/hello-world-this-is-my-blog/"/>
+    <id>http://yoursite.com/2018/10/31/hello-world-this-is-my-blog/</id>
+    <published>2018-10-31T09:00:06.000Z</published>
+    <updated>2018-11-02T05:19:17.894Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="主页" scheme="http://yoursite.com/tags/%E4%B8%BB%E9%A1%B5/"/>
+    
+  </entry>
+  
+</feed>
