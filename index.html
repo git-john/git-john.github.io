@@ -143,7 +143,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/31/hello-world-this-is-my-blog/">hello world,this is my blog</a>
+      <a class="article-title" href="/2018/10/31/hello-world-this-is-my-blog/">python与java这对好基友</a>
     </h1>
   
 
@@ -156,7 +156,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="异同"><a href="#异同" class="headerlink" title="异同"></a>异同</h1><h2 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h2><ol>
+<li>都是面向对象</li>
+<li>都可以跨平台</li>
+<li>都是开源的</li>
+<li>都是强类型语言：类型一旦决定了就不能随意更改。 比如 “3”+2，这是错误的。</li>
+</ol>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>python是全动态性的，可在运行时随时修改代码。 java则不行，tomcat的热部署也是tomcat额外实现的。java的变量是静态的，需要先声明再使用，而python是动态的，不需要提前声明。</li>
+<li>python库很强大，不仅可以使用python，还可以使用C,C++设计，然后给python使用。java库相对没那么强大。</li>
+<li>java运行效率高于python</li>
+<li>java开发偏向于软件工程，团队协同。python则适合快速开发，小型团队。</li>
+<li>java直接通过java虚拟机解释执行字节码（java字节码的设计使得它很容易转成机器码），python需要先编译成中间码，再解释成机器码。</li>
+</ol>
+<h1 id="python的一些特性"><a href="#python的一些特性" class="headerlink" title="python的一些特性"></a>python的一些特性</h1><h2 id="python的GIL"><a href="#python的GIL" class="headerlink" title="python的GIL"></a>python的GIL</h2><blockquote>
+<p>每个线程在执行的过程中需要先获取GIL，保证同一时刻只能有一个线程在运行。</p>
+</blockquote>
+<p>通过以上描述，我们可以看出python不具备并行特性，所以它的并发需要通过多进程的部署方式来提升，以便充分利用多核cpu。</p>
+<p>全局解释器锁，由于cPython虚拟机的原因，导致python的GIL难以移除，和python语言其实没有多少关系。如果想绕过这个限制，可以使用其他解释器，比如jpython，IronPython</p>
+<h2 id="python为什么不像java那样需要定义接口"><a href="#python为什么不像java那样需要定义接口" class="headerlink" title="python为什么不像java那样需要定义接口"></a>python为什么不像java那样需要定义接口</h2><blockquote>
+<p>python的动态性以及多继承特性使得它不需要接口。 而java的变量是静态的，也不支持多继承，所以java需要接口来增加它的扩展性</p>
+</blockquote>
+<p>因为python的变量是动态的，所以你无论参数传的是何种类型，都不会导致程序发生错误无法运行。传的是cat也好，dog也好，后端都可以很好的执行该对象的行为。</p>
+<h1 id="我下载的python视频资料《疯狂的python》"><a href="#我下载的python视频资料《疯狂的python》" class="headerlink" title="我下载的python视频资料《疯狂的python》"></a>我下载的python视频资料《疯狂的python》</h1><blockquote>
+<p>链接：<a href="https://pan.baidu.com/s/1brciek-xekinQVWlNrJaXw" target="_blank" rel="noopener">https://pan.baidu.com/s/1brciek-xekinQVWlNrJaXw</a><br>提取码：r4ip </p>
+</blockquote>
+
       
 
       
@@ -169,11 +194,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -310,11 +339,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">主页</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">主页</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
             
             <div class="clearfix"></div>
