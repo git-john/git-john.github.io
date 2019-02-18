@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-24T09:21:54.538Z</updated>
+  <updated>2019-02-18T08:43:58.060Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>科学上网</title>
+    <link href="http://yoursite.com/2019/02/18/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>http://yoursite.com/2019/02/18/科学上网/</id>
+    <published>2019-02-18T08:37:10.000Z</published>
+    <updated>2019-02-18T08:43:58.060Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><blockquote><p>centos 6.65</p></blockquote><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ul><li>安装python： <blockquote><p>yum install python-setuptools</p></blockquote></li><li>安装wget：<blockquote><p>yum install wget</p></blockquote></li><li>安装pip：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://pypi.python.org/packages/source/p/pip/pip-1.3.1.tar.gz --no-check-certificate</span><br><span class="line">tar -xzvf pip-1.3.1.tar.gz</span><br><span class="line">cd pip-1.3.1</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure></li></ul><p>也可直接使用 easy_install pip</p><a id="more"></a><ul><li>安装shadowsocks <blockquote><p>pip install shadowsocks</p></blockquote></li></ul><h4 id="配置shadowsocks"><a href="#配置shadowsocks" class="headerlink" title="配置shadowsocks"></a>配置shadowsocks</h4><blockquote><p>vi /etc/shadowsocks.json</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;: 1080,</span><br><span class="line">    &quot;server_port&quot;: 8888,</span><br><span class="line">    &quot;password&quot;: &quot;dsfad&quot;,</span><br><span class="line">    &quot;timeout&quot;: 600,</span><br><span class="line">    &quot;method&quot;: &quot;rc4-md5&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><blockquote><p>ssserver -c /etc/shadowsocks.json -d start</p></blockquote><h2 id="ss-与-ssr"><a href="#ss-与-ssr" class="headerlink" title="ss 与 ssr"></a>ss 与 ssr</h2><p>以上我们搭建的是ss（shadowsocks）， 目前ss的作者已经不维护了。 而ssr 是ss的增强版本， 下次搭建科学上网的时候可以考虑使用该工具进行搭建。 搭建方法参考如下链接：</p><p><a href="https://wxnacy.com/2019/02/07/linux-install-ssr/#more" target="_blank" rel="noopener">https://wxnacy.com/2019/02/07/linux-install-ssr/#more</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;centos 6.65&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;安装python： &lt;blockquote&gt;
+&lt;p&gt;yum install python-setuptools&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;安装wget：&lt;blockquote&gt;
+&lt;p&gt;yum install wget&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;安装pip：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget https://pypi.python.org/packages/source/p/pip/pip-1.3.1.tar.gz --no-check-certificate&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar -xzvf pip-1.3.1.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd pip-1.3.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;python setup.py install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也可直接使用 easy_install pip&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>年度总结与来年展望</title>
@@ -43,9 +80,9 @@
     <link href="http://yoursite.com/2019/01/15/%E5%85%B3%E4%BA%8Ehttps%E8%AF%81%E4%B9%A6/"/>
     <id>http://yoursite.com/2019/01/15/关于https证书/</id>
     <published>2019-01-15T15:24:38.000Z</published>
-    <updated>2019-01-24T09:17:26.149Z</updated>
+    <updated>2019-02-18T08:44:39.156Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="关于https证书"><a href="#关于https证书" class="headerlink" title="关于https证书"></a>关于https证书</h1><ul><li>https协议需要到ca申请证书，一般免费证书很少，需要交费。</li><li>http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</li><li>http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</li><li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全</li><li></li></ul><blockquote><p>苹果宣布了一个最后期限：到2017年1月1日 App Store中的所有应用都必须启用 App Transport Security安全功能。App Transport Security（ATS）是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。苹果目前允许开发者暂时关闭ATS，可以继续使用HTTP连接，但到年底所有官方商店的应用都必须强制性使用ATS.<br><br>所以，推行https是整个互联网行业的趋势.<br><a id="more"></a></p></blockquote><h1 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h1><blockquote><p>目前主流的SSL证书主要分为DV SSL 、 OV SSL 、EV SSL</p></blockquote><h2 id="DV-SSL"><a href="#DV-SSL" class="headerlink" title="DV SSL"></a>DV SSL</h2><p>DV SSL证书是只验证网站域名所有权的简易型（Class 1级）SSL证书，可10分钟快速颁发，能起到加密传输的作用，但无法向用户证明网站的真实身份。<br>目前市面上的免费证书都是这个类型的，只是提供了对数据的加密，但是对提供证书的个人和机构的身份不做验证。</p><h2 id="OV-SSL"><a href="#OV-SSL" class="headerlink" title="OV SSL"></a>OV SSL</h2><p>OV SSL,提供加密功能,对申请者做严格的身份审核验证,提供可信身份证明。<br>和DV SSL的区别在于，OV SSL 提供了对个人或者机构的审核，能确认对方的身份，安全性更高。<br>所以这部分的证书申请是收费的~</p><h2 id="EV-SSL"><a href="#EV-SSL" class="headerlink" title="EV SSL"></a>EV SSL</h2><p>超安=EV=最安全、最严格 超安EV SSL证书遵循全球统一的严格身份验证标准，是目前业界安全级别最高的顶级 (Class 4级)SSL证书。<br>金融证券、银行、第三方支付、网上商城等，重点强调网站安全、企业可信形象的网站，涉及交易支付、客户隐私信息和账号密码的传输。<br>这部分的验证要求最高，申请费用也是最贵的。</p><h1 id="常见的颁发证书机构"><a href="#常见的颁发证书机构" class="headerlink" title="常见的颁发证书机构"></a>常见的颁发证书机构</h1><ul><li>赛门铁克(Symantec)是 SSL/TLS 证书的领先提供商</li><li>中国金融认证中心(CFCA)全球信任SSL证书</li><li>GeoTrust是全球第二大数字证书颁发机构</li><li></li></ul><blockquote><p>转自： <a href="https://www.cnblogs.com/Javi/p/6479577.html" target="_blank" rel="noopener">https://www.cnblogs.com/Javi/p/6479577.html</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="关于https证书"><a href="#关于https证书" class="headerlink" title="关于https证书"></a>关于https证书</h1><ul><li>https协议需要到ca申请证书，一般免费证书很少，需要交费。</li><li>http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</li><li>http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</li><li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全</li></ul><blockquote><p>苹果宣布了一个最后期限：到2017年1月1日 App Store中的所有应用都必须启用 App Transport Security安全功能。App Transport Security（ATS）是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。苹果目前允许开发者暂时关闭ATS，可以继续使用HTTP连接，但到年底所有官方商店的应用都必须强制性使用ATS.<br><br>所以，推行https是整个互联网行业的趋势.<br><a id="more"></a></p></blockquote><h1 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h1><blockquote><p>目前主流的SSL证书主要分为DV SSL 、 OV SSL 、EV SSL</p></blockquote><h2 id="DV-SSL"><a href="#DV-SSL" class="headerlink" title="DV SSL"></a>DV SSL</h2><p>DV SSL证书是只验证网站域名所有权的简易型（Class 1级）SSL证书，可10分钟快速颁发，能起到加密传输的作用，但无法向用户证明网站的真实身份。<br>目前市面上的免费证书都是这个类型的，只是提供了对数据的加密，但是对提供证书的个人和机构的身份不做验证。</p><h2 id="OV-SSL"><a href="#OV-SSL" class="headerlink" title="OV SSL"></a>OV SSL</h2><p>OV SSL,提供加密功能,对申请者做严格的身份审核验证,提供可信身份证明。<br>和DV SSL的区别在于，OV SSL 提供了对个人或者机构的审核，能确认对方的身份，安全性更高。<br>所以这部分的证书申请是收费的~</p><h2 id="EV-SSL"><a href="#EV-SSL" class="headerlink" title="EV SSL"></a>EV SSL</h2><p>超安=EV=最安全、最严格 超安EV SSL证书遵循全球统一的严格身份验证标准，是目前业界安全级别最高的顶级 (Class 4级)SSL证书。<br>金融证券、银行、第三方支付、网上商城等，重点强调网站安全、企业可信形象的网站，涉及交易支付、客户隐私信息和账号密码的传输。<br>这部分的验证要求最高，申请费用也是最贵的。</p><h1 id="常见的颁发证书机构"><a href="#常见的颁发证书机构" class="headerlink" title="常见的颁发证书机构"></a>常见的颁发证书机构</h1><ul><li>赛门铁克(Symantec)是 SSL/TLS 证书的领先提供商</li><li>中国金融认证中心(CFCA)全球信任SSL证书</li><li>GeoTrust是全球第二大数字证书颁发机构</li><li></li></ul><blockquote><p>转自： <a href="https://www.cnblogs.com/Javi/p/6479577.html" target="_blank" rel="noopener">https://www.cnblogs.com/Javi/p/6479577.html</a></p></blockquote>]]></content>
     
     <summary type="html">
     
@@ -54,7 +91,6 @@
 &lt;li&gt;http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。&lt;/li&gt;
 &lt;li&gt;http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。&lt;/li&gt;
 &lt;li&gt;http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;苹果宣布了一个最后期限：到2017年1月1日 App Store中的所有应用都必须启用 App Transport Security安全功能。App Transport Security（ATS）是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。苹果目前允许开发者暂时关闭ATS，可以继续使用HTTP连接，但到年底所有官方商店的应用都必须强制性使用ATS.&lt;br&gt;&lt;br&gt;所以，推行https是整个互联网行业的趋势.&lt;br&gt;
