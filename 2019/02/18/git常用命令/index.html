@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>git常用命令 | 十年码农之技术沉淀</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="查看当前没有add 的内容修改  1git diff  查看已经add，没有commit的改动  1git diff --cached  查看当前没有add，没有commit的改动  123git diff head 或者 git status  查看任意两个版本之间的改动  1git diff 版本号码1 版本号码2  比较两个版本号码的src 文件夹的差异  1git diff 版本号码1">
+  <meta name="description" content="查看当前没有add 的内容修改  1git diff  查看已经add，没有commit的改动  1git diff --cached">
 <meta name="keywords" content="工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git常用命令">
 <meta property="og:url" content="http://yoursite.com/2019/02/18/git常用命令/index.html">
 <meta property="og:site_name" content="十年码农之技术沉淀">
-<meta property="og:description" content="查看当前没有add 的内容修改  1git diff  查看已经add，没有commit的改动  1git diff --cached  查看当前没有add，没有commit的改动  123git diff head 或者 git status  查看任意两个版本之间的改动  1git diff 版本号码1 版本号码2  比较两个版本号码的src 文件夹的差异  1git diff 版本号码1">
+<meta property="og:description" content="查看当前没有add 的内容修改  1git diff  查看已经add，没有commit的改动  1git diff --cached">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-18T09:01:54.226Z">
+<meta property="og:updated_time" content="2019-02-18T09:06:36.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用命令">
-<meta name="twitter:description" content="查看当前没有add 的内容修改  1git diff  查看已经add，没有commit的改动  1git diff --cached  查看当前没有add，没有commit的改动  123git diff head 或者 git status  查看任意两个版本之间的改动  1git diff 版本号码1 版本号码2  比较两个版本号码的src 文件夹的差异  1git diff 版本号码1">
+<meta name="twitter:description" content="查看当前没有add 的内容修改  1git diff  查看已经add，没有commit的改动  1git diff --cached">
   
     <link rel="alternative" href="/atom.xml" title="十年码农之技术沉淀" type="application/atom+xml">
   
@@ -183,6 +183,7 @@
 <li>查看已经add，没有commit的改动</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <ol start="3">
 <li>查看当前没有add，没有commit的改动</li>
 </ol>
@@ -212,7 +213,7 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. git reset --hard HEAD^</span><br><span class="line">git中当前版本用HEAD表示，^表示上一个版本。</span><br><span class="line">两个^^表示上上个版本，往上100个版本，就是100个^，</span><br><span class="line">也可以写成HEAD~100.也可以直接使用提交的commitid来回穿梭。</span><br><span class="line">2. git reflog查看命令历史. git log查看提交历史</span><br><span class="line">3. git log查看提交历史</span><br><span class="line">4.git diff 比较的是工作区文件与暂存区文件的区别（上次git add 的内容）</span><br><span class="line">5.git diff --cached 比较的是暂存区的文件与仓库分支里（上次git commit 后的内容）的区别</span><br></pre></td></tr></table></figure>
 <h2 id="答疑"><a href="#答疑" class="headerlink" title="答疑"></a>答疑</h2><hr>
-<h4 id="git-pull-vs-git-fetch-vs-git-remote-update"><a href="#git-pull-vs-git-fetch-vs-git-remote-update" class="headerlink" title="==git pull== vs ==git fetch== vs ==git remote update=="></a>==git pull== vs ==git fetch== vs ==git remote update==</h4><hr>
+<h4 id="git-pull-vs-git-fetch-vs-git-remote-update"><a href="#git-pull-vs-git-fetch-vs-git-remote-update" class="headerlink" title="git pull vs git fetch vs git remote update"></a>git pull vs git fetch vs git remote update</h4><hr>
 <ul>
 <li>git remote update will update all of your branches set to track remote ones, but not merge any changes in.</li>
 <li>git fetch will update only the branch you’re on, but not merge any changes in.</li>
