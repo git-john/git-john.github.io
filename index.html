@@ -152,6 +152,244 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git常用命令" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/18/git常用命令/">git常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/18/git常用命令/" class="archive-article-date">
+  	<time datetime="2019-02-18T09:01:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>查看当前没有add 的内容修改</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>查看已经add，没有commit的改动</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看当前没有add，没有commit的改动</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git diff head </span><br><span class="line">或者 </span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>查看任意两个版本之间的改动</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff 版本号码1 版本号码2</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>比较两个版本号码的src 文件夹的差异</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff 版本号码1 版本号码2  src</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>删除git上的文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm test.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果误删了本地test.txt想要从版本库还原到本地</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --test.txt</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>查看git历史提交（commit）记录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">加上 --pretty=online 参数可以使得信息更简洁</span><br><span class="line">即：git log --pretty=online</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>版本穿梭</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. git reset --hard HEAD^</span><br><span class="line">git中当前版本用HEAD表示，^表示上一个版本。</span><br><span class="line">两个^^表示上上个版本，往上100个版本，就是100个^，</span><br><span class="line">也可以写成HEAD~100.也可以直接使用提交的commitid来回穿梭。</span><br><span class="line">2. git reflog查看命令历史. git log查看提交历史</span><br><span class="line">3. git log查看提交历史</span><br><span class="line">4.git diff 比较的是工作区文件与暂存区文件的区别（上次git add 的内容）</span><br><span class="line">5.git diff --cached 比较的是暂存区的文件与仓库分支里（上次git commit 后的内容）的区别</span><br></pre></td></tr></table></figure>
+<h2 id="答疑"><a href="#答疑" class="headerlink" title="答疑"></a>答疑</h2><hr>
+<h4 id="git-pull-vs-git-fetch-vs-git-remote-update"><a href="#git-pull-vs-git-fetch-vs-git-remote-update" class="headerlink" title="==git pull== vs ==git fetch== vs ==git remote update=="></a>==git pull== vs ==git fetch== vs ==git remote update==</h4><hr>
+<ul>
+<li>git remote update will update all of your branches set to track remote ones, but not merge any changes in.</li>
+<li>git fetch will update only the branch you’re on, but not merge any changes in.</li>
+<li>git pull will update and merge any remote changes of the current branch you’re on. This would be the one you use to update a local branch.</li>
+</ul>
+<h2 id="Command-line-instructions"><a href="#Command-line-instructions" class="headerlink" title="Command line instructions"></a>Command line instructions</h2><ul>
+<li>Git global setup</li>
+<li>git config –global user.name “康强”</li>
+<li>git config –global user.email “<a href="mailto:kangqiang@k3k.com" target="_blank" rel="noopener">kangqiang@k3k.com</a>“</li>
+</ul>
+<h3 id="Create-a-new-repository"><a href="#Create-a-new-repository" class="headerlink" title="Create a new repository"></a>Create a new repository</h3><ul>
+<li>git clone ssh:<a href="mailto://git@gd.k3k.com" target="_blank" rel="noopener">//git@gd.k3k.com</a>:13303/kangqiang/ios_aihaoquan.git</li>
+<li>cd ios_aihaoquan</li>
+<li>touch README.md</li>
+<li>git add README.md</li>
+<li>git commit -m “add README”</li>
+<li>git push -u origin master</li>
+</ul>
+<h3 id="Existing-folder"><a href="#Existing-folder" class="headerlink" title="Existing folder"></a>Existing folder</h3><ul>
+<li>cd existing_folder</li>
+<li>git init</li>
+<li>git remote add origin ssh:<a href="mailto://git@gd.k3k.com" target="_blank" rel="noopener">//git@gd.k3k.com</a>:13303/kangqiang/ios_aihaoquan.git</li>
+<li>git add .</li>
+<li>git commit -m “Initial commit”</li>
+<li>git push -u origin master</li>
+</ul>
+<h3 id="Existing-Git-repository"><a href="#Existing-Git-repository" class="headerlink" title="Existing Git repository"></a>Existing Git repository</h3><ul>
+<li>cd existing_repo</li>
+<li>git remote rename origin old-origin</li>
+<li>git remote add origin ssh:<a href="mailto://git@gd.k3k.com" target="_blank" rel="noopener">//git@gd.k3k.com</a>:13303/kangqiang/ios_aihaoquan.git</li>
+<li>git push -u origin –all</li>
+<li>git push -u origin –tags</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.kancloud.cn/xiak/github/218507" target="_blank" rel="noopener">https://www.kancloud.cn/xiak/github/218507</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></li>
+<li><a href="https://learngitbranching.js.org/?demo" target="_blank" rel="noopener">https://learngitbranching.js.org/?demo</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/18/git常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-定时任务检测进程" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/18/定时任务检测进程/">定时任务检测进程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/18/定时任务检测进程/" class="archive-article-date">
+  	<time datetime="2019-02-18T08:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="php网站总是无法访问，重启php-fpm进程后可以访问。"><a href="#php网站总是无法访问，重启php-fpm进程后可以访问。" class="headerlink" title="php网站总是无法访问，重启php-fpm进程后可以访问。"></a><p>php网站总是无法访问，重启php-fpm进程后可以访问。</p></h6><p>为了避免麻烦,写了个守护进程监控，当发现端口无法telnet后，杀掉进程重启。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#check php-fpm server up/down</span><br><span class="line">TelLog=/home/xcguest/telphp.log</span><br><span class="line">/usr/bin/telnet 127.0.0.1 9000 &lt;&lt; ! &gt; $TelLog</span><br><span class="line">quit</span><br><span class="line">!</span><br><span class="line">SOK=`cat $TelLog | grep &quot;Escape character&quot; |wc -l`</span><br><span class="line">if [ $SOK -eq 1 ];then</span><br><span class="line">  echo &quot;php-fpm is ok&quot;</span><br><span class="line">else</span><br><span class="line">  killall -9 php-fpm</span><br><span class="line">  sleep 1</span><br><span class="line">  /usr/local/php/sbin/php-fpm</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>保存为php_monitor.sh后；</li>
+<li>执行chmod +x 使得脚本拥有执行权限。</li>
+<li>执行crontab -e， 添加定时脚本每分钟检查一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/1 * * * * /home/xcguest/php_check.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/18/定时任务检测进程/">展开全文 >></a>
+        </p>
+      
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-科学上网" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -203,11 +441,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -601,6 +839,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">主页</a>
               </li>
              
@@ -613,15 +855,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
               </li>
             
             <div class="clearfix"></div>
