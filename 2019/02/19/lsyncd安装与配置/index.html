@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>定时任务检测进程 | 十年码农之技术沉淀</title>
+  <title>lsyncd多目录同步 | 十年码农之技术沉淀</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php网站总是无法访问，重启php-fpm进程后可以访问。为了避免麻烦,写了个守护进程监控，当发现端口无法telnet后，杀掉进程重启。 1234567891011121314#!/bin/bash#check php-fpm server up/downTelLog=/home/xcguest/telphp.log/usr/bin/telnet 127.0.0.1 9000 &amp;lt;&amp;lt; !">
-<meta name="keywords" content="工具,linux">
+  <meta name="description" content="安装lsyncd lsyncd即Live Syncing Daemon，它是开源的数据实时同步工具(后台进程)，基于Linux2.6.3以后的inotify机制和rsync，安装方法如下：  1yum install -y lsyncd lua lua-devel">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="定时任务检测进程">
-<meta property="og:url" content="http://yoursite.com/2019/02/18/定时任务检测进程/index.html">
+<meta property="og:title" content="lsyncd多目录同步">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/lsyncd安装与配置/index.html">
 <meta property="og:site_name" content="十年码农之技术沉淀">
-<meta property="og:description" content="php网站总是无法访问，重启php-fpm进程后可以访问。为了避免麻烦,写了个守护进程监控，当发现端口无法telnet后，杀掉进程重启。 1234567891011121314#!/bin/bash#check php-fpm server up/downTelLog=/home/xcguest/telphp.log/usr/bin/telnet 127.0.0.1 9000 &amp;lt;&amp;lt; !">
+<meta property="og:description" content="安装lsyncd lsyncd即Live Syncing Daemon，它是开源的数据实时同步工具(后台进程)，基于Linux2.6.3以后的inotify机制和rsync，安装方法如下：  1yum install -y lsyncd lua lua-devel">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-18T08:59:57.387Z">
+<meta property="og:updated_time" content="2019-02-19T09:15:25.358Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="定时任务检测进程">
-<meta name="twitter:description" content="php网站总是无法访问，重启php-fpm进程后可以访问。为了避免麻烦,写了个守护进程监控，当发现端口无法telnet后，杀掉进程重启。 1234567891011121314#!/bin/bash#check php-fpm server up/downTelLog=/home/xcguest/telphp.log/usr/bin/telnet 127.0.0.1 9000 &amp;lt;&amp;lt; !">
+<meta name="twitter:title" content="lsyncd多目录同步">
+<meta name="twitter:description" content="安装lsyncd lsyncd即Live Syncing Daemon，它是开源的数据实时同步工具(后台进程)，基于Linux2.6.3以后的inotify机制和rsync，安装方法如下：  1yum install -y lsyncd lua lua-devel">
   
     <link rel="alternative" href="/atom.xml" title="十年码农之技术沉淀" type="application/atom+xml">
   
@@ -155,35 +155,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-定时任务检测进程" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-lsyncd安装与配置" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      定时任务检测进程
+      lsyncd多目录同步
     </h1>
   
 
         
-        <a href="/2019/02/18/定时任务检测进程/" class="archive-article-date">
-  	<time datetime="2019-02-18T08:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-18</time>
+        <a href="/2019/02/19/lsyncd安装与配置/" class="archive-article-date">
+  	<time datetime="2019-02-19T08:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="php网站总是无法访问，重启php-fpm进程后可以访问。"><a href="#php网站总是无法访问，重启php-fpm进程后可以访问。" class="headerlink" title="php网站总是无法访问，重启php-fpm进程后可以访问。"></a><p>php网站总是无法访问，重启php-fpm进程后可以访问。</p></h6><p>为了避免麻烦,写了个守护进程监控，当发现端口无法telnet后，杀掉进程重启。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#check php-fpm server up/down</span><br><span class="line">TelLog=/home/xcguest/telphp.log</span><br><span class="line">/usr/bin/telnet 127.0.0.1 9000 &lt;&lt; ! &gt; $TelLog</span><br><span class="line">quit</span><br><span class="line">!</span><br><span class="line">SOK=`cat $TelLog | grep &quot;Escape character&quot; |wc -l`</span><br><span class="line">if [ $SOK -eq 1 ];then</span><br><span class="line">  echo &quot;php-fpm is ok&quot;</span><br><span class="line">else</span><br><span class="line">  killall -9 php-fpm</span><br><span class="line">  sleep 1</span><br><span class="line">  /usr/local/php/sbin/php-fpm</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+        <h3 id="安装lsyncd"><a href="#安装lsyncd" class="headerlink" title="安装lsyncd"></a>安装lsyncd</h3><blockquote>
+<p>lsyncd即Live Syncing Daemon，它是开源的数据实时同步工具(后台进程)，基于Linux2.6.3以后的inotify机制和rsync，安装方法如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y lsyncd lua lua-devel</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="lsyncd设置"><a href="#lsyncd设置" class="headerlink" title="lsyncd设置"></a>lsyncd设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">-- global setting</span><br><span class="line">---------------------------------------------------------------------------------settings</span><br><span class="line"></span><br><span class="line">settings&#123;</span><br><span class="line">        logfile         = &quot;/data/var/log/lsyncd/lsyncd.log&quot;,</span><br><span class="line">        statusFile      = &quot;/data/var/log/lsyncd/lsyncd.status&quot;,</span><br><span class="line">        inotifyMode     = &quot;CloseWrite&quot;,</span><br><span class="line">        maxProcesses    = 7</span><br><span class="line">        -- nodaemon     =true,</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---------------------------------------------------------------------------------settings</span><br><span class="line"></span><br><span class="line">---------------------------------------------------------------------------------define</span><br><span class="line">-- host list，要同步的服务器列表</span><br><span class="line">servers = &#123;</span><br><span class="line">    &quot;xx.xx.xx.xx&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-- directory list </span><br><span class="line">dirpath = &#123;</span><br><span class="line">	&quot;/data/www&quot;,</span><br><span class="line">	&quot;/data/cmd&quot;,</span><br><span class="line">	&quot;/data/local/tomcat8/conf&quot;,</span><br><span class="line">	&quot;/data/local/nginx/conf&quot;,</span><br><span class="line">	&quot;/etc/rsyslog.d&quot;</span><br><span class="line">&#125;</span><br><span class="line">---------------------------------------------------------------------------------define</span><br><span class="line"></span><br><span class="line">---------------------------------------------------------------------------------action</span><br><span class="line">for _, srvip in ipairs(servers) do</span><br><span class="line">	for _, dir in ipairs(dirpath) do</span><br><span class="line"></span><br><span class="line">		sync &#123;</span><br><span class="line">		    default.rsync,</span><br><span class="line">		    source			= dir,</span><br><span class="line">		    target			= &quot;webguest@&quot;..srvip..&quot;:&quot;..dir,</span><br><span class="line">		    maxDelays			= 5,</span><br><span class="line">		    delay			= 30,</span><br><span class="line">		    exclude			= &#123;&quot;*.tmp&quot;,&quot;Catalina&quot;&#125;,</span><br><span class="line">		    rsync			= &#123;</span><br><span class="line">						binary          = &quot;/usr/bin/rsync&quot;,</span><br><span class="line">						archive         = true,</span><br><span class="line">						compress        = true,</span><br><span class="line">						-- bwlimit         = 2000,</span><br><span class="line">						rsh             = &quot;/usr/bin/ssh -p 10062 -o StrictHostKeyChecking=no -l webguest -i /home/webguest/.ssh/id_rsa_slb&quot;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	end</span><br><span class="line">end</span><br><span class="line">---------------------------------------------------------------------------------action</span><br></pre></td></tr></table></figure>
 <blockquote>
-<ol>
-<li>保存为php_monitor.sh后；</li>
-<li>执行chmod +x 使得脚本拥有执行权限。</li>
-<li>执行crontab -e， 添加定时脚本每分钟检查一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/1 * * * * /home/xcguest/php_check.sh</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>以上实现的是通过shell脚本循环逻辑来做多目录的同步， 也可以简单的使用多个sync配置多个目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">sync &#123;</span><br><span class="line">    default.rsync,</span><br><span class="line">    source			= /data/www/xxdir,</span><br><span class="line">    target			= &quot;webguest@xx.xx.xx.xx:/data/www/xxdir,</span><br><span class="line">    maxDelays			= 5,</span><br><span class="line">    delay			= 30,</span><br><span class="line">    exclude			= &#123;&quot;*.tmp&quot;,&quot;Catalina&quot;&#125;,</span><br><span class="line">    rsync			= &#123;</span><br><span class="line">			binary          = &quot;/usr/bin/rsync&quot;,</span><br><span class="line">			archive         = true,</span><br><span class="line">			compress        = true,</span><br><span class="line">			-- bwlimit         = 2000,</span><br><span class="line">			rsh             = &quot;/usr/bin/ssh -p 10062 -o StrictHostKeyChecking=no -l webguest -i id_rsa&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">sync &#123;</span><br><span class="line">    default.rsync,</span><br><span class="line">    source			= /data/www/xxdir2,</span><br><span class="line">    target			= &quot;webguest@xx.xx.xx.xx:/data/www/xxdir2,</span><br><span class="line">    maxDelays			= 5,</span><br><span class="line">    delay			= 30,</span><br><span class="line">    exclude			= &#123;&quot;*.tmp&quot;,&quot;Catalina&quot;&#125;,</span><br><span class="line">    rsync			= &#123;</span><br><span class="line">			binary          = &quot;/usr/bin/rsync&quot;,</span><br><span class="line">			archive         = true,</span><br><span class="line">			compress        = true,</span><br><span class="line">			-- bwlimit         = 2000,</span><br><span class="line">			rsh             = &quot;/usr/bin/ssh -p 10062 -o StrictHostKeyChecking=no -l webguest -i id_rsa&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a href="https://klionsec.github.io/2017/11/18/lsyncd/#menu" target="_blank" rel="noopener">https://klionsec.github.io/2017/11/18/lsyncd/#menu</a></p>
 </blockquote>
 
       
@@ -197,10 +200,6 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
@@ -243,7 +242,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/18/定时任务检测进程/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/19/lsyncd安装与配置/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -258,18 +257,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/02/18/git常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          git常用命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/18/科学上网/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">科学上网</div>
+    <a href="/2019/02/19/mac-xcode快捷键大全/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mac,xcode快捷键大全</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -299,7 +289,7 @@
   
 
   
-  <div id="SOHUCS" sid="定时任务检测进程"></div> 
+  <div id="SOHUCS" sid="lsyncd安装与配置"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
