@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>十年码农之技术沉淀</title>
+  <title>码农人生</title>
   
   <subtitle>技术博客，随笔，技术沉淀总结</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://blog.readytran.com/"/>
   <updated>2019-02-19T09:15:25.358Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://blog.readytran.com/</id>
   
   <author>
     <name>John KANG</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>lsyncd多目录同步</title>
-    <link href="http://yoursite.com/2019/02/19/lsyncd%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2019/02/19/lsyncd安装与配置/</id>
+    <link href="http://blog.readytran.com/2019/02/19/lsyncd%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://blog.readytran.com/2019/02/19/lsyncd安装与配置/</id>
     <published>2019-02-19T08:02:38.000Z</published>
     <updated>2019-02-19T09:15:25.358Z</updated>
     
@@ -35,14 +35,14 @@
     </summary>
     
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="http://blog.readytran.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>mac,xcode快捷键大全</title>
-    <link href="http://yoursite.com/2019/02/19/mac-xcode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/"/>
-    <id>http://yoursite.com/2019/02/19/mac-xcode快捷键大全/</id>
+    <link href="http://blog.readytran.com/2019/02/19/mac-xcode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/"/>
+    <id>http://blog.readytran.com/2019/02/19/mac-xcode快捷键大全/</id>
     <published>2019-02-19T07:49:35.000Z</published>
     <updated>2019-02-19T07:57:52.170Z</updated>
     
@@ -65,16 +65,16 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://blog.readytran.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="http://blog.readytran.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>git常用命令</title>
-    <link href="http://yoursite.com/2019/02/18/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2019/02/18/git常用命令/</id>
+    <link href="http://blog.readytran.com/2019/02/18/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.readytran.com/2019/02/18/git常用命令/</id>
     <published>2019-02-18T09:01:31.000Z</published>
     <updated>2019-02-18T09:06:36.739Z</updated>
     
@@ -94,14 +94,14 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://blog.readytran.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>定时任务检测进程</title>
-    <link href="http://yoursite.com/2019/02/18/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%A3%80%E6%B5%8B%E8%BF%9B%E7%A8%8B/"/>
-    <id>http://yoursite.com/2019/02/18/定时任务检测进程/</id>
+    <link href="http://blog.readytran.com/2019/02/18/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%A3%80%E6%B5%8B%E8%BF%9B%E7%A8%8B/"/>
+    <id>http://blog.readytran.com/2019/02/18/定时任务检测进程/</id>
     <published>2019-02-18T08:59:18.000Z</published>
     <updated>2019-02-18T08:59:57.387Z</updated>
     
@@ -117,16 +117,16 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://blog.readytran.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="http://blog.readytran.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>科学上网</title>
-    <link href="http://yoursite.com/2019/02/18/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    <id>http://yoursite.com/2019/02/18/科学上网/</id>
+    <link href="http://blog.readytran.com/2019/02/18/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>http://blog.readytran.com/2019/02/18/科学上网/</id>
     <published>2019-02-18T08:37:10.000Z</published>
     <updated>2019-02-18T08:43:58.060Z</updated>
     
@@ -154,16 +154,16 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://blog.readytran.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="http://blog.readytran.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>年度总结与来年展望</title>
-    <link href="http://yoursite.com/2019/01/24/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B8%8E%E6%9D%A5%E5%B9%B4%E5%B1%95%E6%9C%9B/"/>
-    <id>http://yoursite.com/2019/01/24/年度总结与来年展望/</id>
+    <link href="http://blog.readytran.com/2019/01/24/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B8%8E%E6%9D%A5%E5%B9%B4%E5%B1%95%E6%9C%9B/"/>
+    <id>http://blog.readytran.com/2019/01/24/年度总结与来年展望/</id>
     <published>2019-01-24T15:33:10.000Z</published>
     <updated>2019-01-24T09:21:54.538Z</updated>
     
@@ -176,16 +176,16 @@
     </summary>
     
     
-      <category term="主页" scheme="http://yoursite.com/tags/%E4%B8%BB%E9%A1%B5/"/>
+      <category term="主页" scheme="http://blog.readytran.com/tags/%E4%B8%BB%E9%A1%B5/"/>
     
-      <category term="年度总结" scheme="http://yoursite.com/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+      <category term="年度总结" scheme="http://blog.readytran.com/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>关于https证书</title>
-    <link href="http://yoursite.com/2019/01/15/%E5%85%B3%E4%BA%8Ehttps%E8%AF%81%E4%B9%A6/"/>
-    <id>http://yoursite.com/2019/01/15/关于https证书/</id>
+    <link href="http://blog.readytran.com/2019/01/15/%E5%85%B3%E4%BA%8Ehttps%E8%AF%81%E4%B9%A6/"/>
+    <id>http://blog.readytran.com/2019/01/15/关于https证书/</id>
     <published>2019-01-15T15:24:38.000Z</published>
     <updated>2019-02-18T08:44:39.156Z</updated>
     
@@ -205,14 +205,14 @@
     </summary>
     
     
-      <category term="主页" scheme="http://yoursite.com/tags/%E4%B8%BB%E9%A1%B5/"/>
+      <category term="主页" scheme="http://blog.readytran.com/tags/%E4%B8%BB%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
     <title>python与java这对好基友</title>
-    <link href="http://yoursite.com/2018/10/31/python%E4%B8%8Ejava%E8%BF%99%E5%AF%B9%E5%A5%BD%E5%9F%BA%E5%8F%8B/"/>
-    <id>http://yoursite.com/2018/10/31/python与java这对好基友/</id>
+    <link href="http://blog.readytran.com/2018/10/31/python%E4%B8%8Ejava%E8%BF%99%E5%AF%B9%E5%A5%BD%E5%9F%BA%E5%8F%8B/"/>
+    <id>http://blog.readytran.com/2018/10/31/python与java这对好基友/</id>
     <published>2018-10-31T09:00:06.000Z</published>
     <updated>2019-01-24T09:17:06.206Z</updated>
     
@@ -231,11 +231,11 @@
     </summary>
     
     
-      <category term="主页" scheme="http://yoursite.com/tags/%E4%B8%BB%E9%A1%B5/"/>
+      <category term="主页" scheme="http://blog.readytran.com/tags/%E4%B8%BB%E9%A1%B5/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="python" scheme="http://blog.readytran.com/tags/python/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://blog.readytran.com/tags/java/"/>
     
   </entry>
   
