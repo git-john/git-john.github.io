@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>Tag: java | 码农人生</title>
+  <title>三次握手四次挥手 | 码农人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="码农人生">
-<meta property="og:url" content="http://blog.readytran.com/tags/java/index.html">
+  <meta name="description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
+<meta name="keywords" content="tcp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三次握手四次挥手">
+<meta property="og:url" content="http://blog.readytran.com/2019/02/28/三次握手四次挥手/index.html">
 <meta property="og:site_name" content="码农人生">
+<meta property="og:description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.readytran.com/2019/02/28/asset/img/client_1.png">
+<meta property="og:image" content="http://blog.readytran.com/2019/02/28/asset/img/server_1.png">
+<meta property="og:updated_time" content="2019-02-28T09:25:37.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农人生">
+<meta name="twitter:title" content="三次握手四次挥手">
+<meta name="twitter:description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
+<meta name="twitter:image" content="http://blog.readytran.com/2019/02/28/asset/img/client_1.png">
   
     <link rel="alternative" href="/atom.xml" title="码农人生" type="application/atom+xml">
   
@@ -156,68 +164,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-三次握手四次挥手" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/31/python与java这对好基友/" class="archive-article-date">
-  	<time datetime="2018-10-31T09:00:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/31/python与java这对好基友/">python与java这对好基友</a>
+    <h1 class="article-title" itemprop="name">
+      三次握手四次挥手
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/28/三次握手四次挥手/" class="archive-article-date">
+  	<time datetime="2019-02-28T08:35:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决</li>
+<li>CLOSE_WAIT 1 #表示被动关闭，需要从程序本身出发</li>
+<li>ESTABLISHED 30 #表示正在通信</li>
+</ul>
+<hr>
+<blockquote>
+<p>要了解这个命令产生的结果，需要了解tcp的三次握手，四次挥手. 三次握手是为了建立连接，四次挥手是为了断开连接<br><a id="more"></a></p>
+</blockquote>
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ol>
+<li>client端发送请求报文：syn=1,seq=client_sn</li>
+<li>Server接收到请求报文后进行第一次握手并进行资源分配，回复报文：syn=1，seq=server_sn,ack=client_sn+1</li>
+<li>客户端收到server的回复后，进行第二次握手并进行资源分配，回复：syn=0，seq=client_sn+1,ack=server_sn+1</li>
+<li>Server收到客户端的ack报文后为第三次握手，表示连接成功建立</li>
+</ol>
+<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p>断开连接，可以是服务器断开，也可以是客户端断开。<br>客户端主动断开连接的情况如下：</p>
+<ol>
+<li>客户端发送fin,进入fin_wait状态，表示：客户端没有数据要发给server，请求关闭 （第一次挥手）</li>
+<li>服务端收到fin后，发送ack，说：请求已收到，我还没准备好，请等待。此时连接状态在服务器端为close_wait状态，（第二次挥手） 而客户端进入FIN_wait2状态。</li>
+<li>服务器确认准备好了以后，发送fin给客户端，表示：准备好关闭。（第三次挥手）</li>
+<li>客户端收到FIN后，发送ack给服务端，自身进入time_wait状态。如果server没有收到ack则可以重传 （第四次挥手）</li>
+<li>服务端收到ack后，知道可以关闭，不再回复消息</li>
+<li>客户端等待2MSL后，确认没有收到消息，把连接中断<br><img src="../asset/img/client_1.png" alt="hexo image"><br><img src="../asset/img/server_1.png" alt="hexo image"></li>
+</ol>
+<hr>
+<p>看了上面的情况，大概知道这几个状态的数据是怎么形成的了，以下是解决方案：</p>
+<blockquote>
+<p>通过修改/etc/sysctl.conf文件，服务器能够快速回收和重用TIME_WAIT 的资源</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_syncookies = 1  #表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭         </span><br><span class="line">net.ipv4.tcp_tw_reuse = 1 #表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭  </span><br><span class="line">net.ipv4.tcp_tw_recycle = 1  #表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭    </span><br><span class="line">net.ipv4.tcp_fin_timeout=30 #表示如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>导致 CLOSE_WAIT 大量存在的原因：就是在对方关闭连接之后服务器程序自己没有进一步发出 ACK 信号。换句话说，就是在对方连接关闭之后，程序里没有检测到，或者程序压根就忘记了这个时候需要关闭连接，于是这个资源就一直被程序占着；服务器对于程序抢占的资源没有主动回收的权利，除非终止程序运行。</p>
+</blockquote>
+<p>解决方案：代码需要判断 socket ，一旦读到 0，断开连接，read 返回负，检查一下 errno，如果不是 AGAIN，就断开连接。<br>所以解决 CLOSE_WAIT 大量存在的方法还是从自身的代码出发。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tcp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/02/28/三次握手四次挥手/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/02/28/ios开发者帐号/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ios开发者帐号
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/02/19/lsyncd安装与配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lsyncd多目录同步</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="三次握手四次挥手"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyu3wTC8t",
+        conf: "fe52c06fc688a8eadc4f9bd9e891c7c6"
+    });
+</script>
+
+  
+
+  
+
+  
 
 
           </div>
@@ -244,9 +370,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
