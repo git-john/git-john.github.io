@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="码农人生">
 <meta property="og:description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://blog.readytran.com/2019/02/28/asset/img/client_1.png">
-<meta property="og:image" content="http://blog.readytran.com/2019/02/28/asset/img/server_1.png">
-<meta property="og:updated_time" content="2019-02-28T09:25:37.142Z">
+<meta property="og:image" content="http://blog.readytran.com/asset/img/client_1.png">
+<meta property="og:image" content="http://blog.readytran.com/asset/img/server_1.png">
+<meta property="og:updated_time" content="2019-02-28T09:28:55.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三次握手四次挥手">
 <meta name="twitter:description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
-<meta name="twitter:image" content="http://blog.readytran.com/2019/02/28/asset/img/client_1.png">
+<meta name="twitter:image" content="http://blog.readytran.com/asset/img/client_1.png">
   
     <link rel="alternative" href="/atom.xml" title="码农人生" type="application/atom+xml">
   
@@ -208,7 +208,7 @@
 <li>服务器确认准备好了以后，发送fin给客户端，表示：准备好关闭。（第三次挥手）</li>
 <li>客户端收到FIN后，发送ack给服务端，自身进入time_wait状态。如果server没有收到ack则可以重传 （第四次挥手）</li>
 <li>服务端收到ack后，知道可以关闭，不再回复消息</li>
-<li>客户端等待2MSL后，确认没有收到消息，把连接中断<br><img src="../asset/img/client_1.png" alt="hexo image"><br><img src="../asset/img/server_1.png" alt="hexo image"></li>
+<li>客户端等待2MSL后，确认没有收到消息，把连接中断<br><img src="/asset/img/client_1.png" alt="hexo image"><br><img src="/asset/img/server_1.png" alt="hexo image"></li>
 </ol>
 <hr>
 <p>看了上面的情况，大概知道这几个状态的数据是怎么形成的了，以下是解决方案：</p>
@@ -444,15 +444,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,6 +461,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,6 +521,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://readytran.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>雷帝翻译</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://wxnacy.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>温欣爸比</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://blog.minhow.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>minhaw</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.jianshu.com/p/517263426abd" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>hexo博客搭建</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://zhangjh.me/page/2/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>但丁</a>
             </li>
           
         </ul>

@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>Archives: 2019 | 码农人生</title>
+  <title>iptables | 码农人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="码农人生">
-<meta property="og:url" content="http://blog.readytran.com/archives/2019/index.html">
+  <meta name="description" content="引言公司的防攻击策略主要是通过iptables进行数据包转发，将真实服务器隐藏在一堆非业务主机后面，这样服务器被攻击的时候，只需要更换服务器ip，将被攻击的服务器丢入废弃池就好，而不需要重新搭建部署服务器。示例代码如下：123456iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3030 -j DNAT --to 10.51.18.147:">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iptables">
+<meta property="og:url" content="http://blog.readytran.com/2019/03/11/iptables/index.html">
 <meta property="og:site_name" content="码农人生">
+<meta property="og:description" content="引言公司的防攻击策略主要是通过iptables进行数据包转发，将真实服务器隐藏在一堆非业务主机后面，这样服务器被攻击的时候，只需要更换服务器ip，将被攻击的服务器丢入废弃池就好，而不需要重新搭建部署服务器。示例代码如下：123456iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3030 -j DNAT --to 10.51.18.147:">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.readytran.com/2019/03/11/asset/img/iptables.png">
+<meta property="og:updated_time" content="2019-03-11T02:10:29.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农人生">
+<meta name="twitter:title" content="iptables">
+<meta name="twitter:description" content="引言公司的防攻击策略主要是通过iptables进行数据包转发，将真实服务器隐藏在一堆非业务主机后面，这样服务器被攻击的时候，只需要更换服务器ip，将被攻击的服务器丢入废弃池就好，而不需要重新搭建部署服务器。示例代码如下：123456iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3030 -j DNAT --to 10.51.18.147:">
+<meta name="twitter:image" content="http://blog.readytran.com/2019/03/11/asset/img/iptables.png">
   
     <link rel="alternative" href="/atom.xml" title="码农人生" type="application/atom+xml">
   
@@ -156,36 +163,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-iptables" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      iptables
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/11/iptables/" class="archive-article-date">
+
+        
+        <a href="/2019/03/11/iptables/" class="archive-article-date">
   	<time datetime="2019-03-11T01:55:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/11/iptables/">iptables</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>公司的防攻击策略主要是通过iptables进行数据包转发，将真实服务器隐藏在一堆非业务主机后面，这样服务器被攻击的时候，只需要更换服务器ip，将被攻击的服务器丢入废弃池就好，而不需要重新搭建部署服务器。示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3030 -j DNAT --to 10.51.18.147:3030 </span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.51.18.147 -p tcp --dport 3030 -j MASQUERADE</span><br><span class="line">iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3309 -j DNAT --to 10.51.18.147:3309</span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.51.18.147 -p tcp --dport 3309 -j MASQUERADE</span><br><span class="line">iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3310 -j DNAT --to 10.51.18.147:3310</span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.51.18.147 -p tcp --dport 3310 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<h1 id="iptables详解"><a href="#iptables详解" class="headerlink" title="iptables详解"></a>iptables详解</h1><h2 id="iptables基础"><a href="#iptables基础" class="headerlink" title="iptables基础"></a>iptables基础</h2><p>iptables规则为预定义的条件，当数据包包头符合条件时候，按规则来处理数据包。规则存储在内核空间信息包过滤表中。这些规则分别指定了源地址，目标地址，传输协议（tcp,udp,icmp等）和服务类型（如http，ftp，smtp等）当数据包与规则匹配时候，iptables根据规则定义的方法处理（accept，reject，drop）</p>
+<h2 id="iptables和netfilter的关系"><a href="#iptables和netfilter的关系" class="headerlink" title="iptables和netfilter的关系"></a>iptables和netfilter的关系</h2><p>iptables只是防火墙的管理工具，netfilter是功能实现</p>
+<h2 id="iptables传输数据包过程"><a href="#iptables传输数据包过程" class="headerlink" title="iptables传输数据包过程"></a>iptables传输数据包过程</h2><ol>
+<li>当一个数据包进入网卡时，首先进入prerouting，内核根据数据包目的IP判断是否要转发出去</li>
+<li>如果数据包是进入本机的，就会向下走，进入input链，这个时候所有进程都可以收到数据包。本机进程发送数据时会进入output链，进入postrouting链输出</li>
+<li>如果数据包是要转发出去，数据包就会如图向右移动，进入forward链，到达postrouting链输出</li>
+</ol>
+<p><img src="../asset/img/iptables.png" alt="hexo image"></p>
+<p>参考链接：<br><a href="https://www.jianshu.com/p/ee4ee15d3658" target="_blank" rel="noopener">https://www.jianshu.com/p/ee4ee15d3658</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -197,324 +212,101 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/03/11/iptables/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/01/江影工作总结/" class="archive-article-date">
-  	<time datetime="2019-03-01T08:15:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/01/江影工作总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">江影工作总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/01/江影工作总结/">江影工作总结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  <div id="SOHUCS" sid="iptables"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyu3wTC8t",
+        conf: "fe52c06fc688a8eadc4f9bd9e891c7c6"
+    });
+</script>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/01/为什么我的tomcat会自行崩溃/" class="archive-article-date">
-  	<time datetime="2019-03-01T02:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/01/为什么我的tomcat会自行崩溃/">为什么我的tomcat会自行崩溃</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/01/理解redis字符串类型/" class="archive-article-date">
-  	<time datetime="2019-03-01T02:19:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/01/理解redis字符串类型/">理解redis字符串类型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/01/理解java垃圾回收/" class="archive-article-date">
-  	<time datetime="2019-03-01T02:17:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/01/理解java垃圾回收/">理解java垃圾回收</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/ios开发者帐号/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:40:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/ios开发者帐号/">ios开发者帐号</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ios</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/三次握手四次挥手/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:35:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/三次握手四次挥手/">三次握手四次挥手</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tcp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/19/lsyncd安装与配置/" class="archive-article-date">
-  	<time datetime="2019-02-19T08:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/19/lsyncd安装与配置/">lsyncd多目录同步</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/19/mac-xcode快捷键大全/" class="archive-article-date">
-  	<time datetime="2019-02-19T07:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/19/mac-xcode快捷键大全/">mac,xcode快捷键大全</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/18/git常用命令/" class="archive-article-date">
-  	<time datetime="2019-02-18T09:01:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/18/git常用命令/">git常用命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -542,8 +334,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

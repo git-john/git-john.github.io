@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.readytran.com/"/>
-  <updated>2019-02-28T09:23:42.398Z</updated>
+  <updated>2019-03-11T02:10:29.618Z</updated>
   <id>http://blog.readytran.com/</id>
   
   <author>
@@ -15,6 +15,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iptables</title>
+    <link href="http://blog.readytran.com/2019/03/11/iptables/"/>
+    <id>http://blog.readytran.com/2019/03/11/iptables/</id>
+    <published>2019-03-11T01:55:31.000Z</published>
+    <updated>2019-03-11T02:10:29.618Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>公司的防攻击策略主要是通过iptables进行数据包转发，将真实服务器隐藏在一堆非业务主机后面，这样服务器被攻击的时候，只需要更换服务器ip，将被攻击的服务器丢入废弃池就好，而不需要重新搭建部署服务器。示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3030 -j DNAT --to 10.51.18.147:3030 </span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.51.18.147 -p tcp --dport 3030 -j MASQUERADE</span><br><span class="line">iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3309 -j DNAT --to 10.51.18.147:3309</span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.51.18.147 -p tcp --dport 3309 -j MASQUERADE</span><br><span class="line">iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 3310 -j DNAT --to 10.51.18.147:3310</span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.51.18.147 -p tcp --dport 3310 -j MASQUERADE</span><br></pre></td></tr></table></figure></p><h1 id="iptables详解"><a href="#iptables详解" class="headerlink" title="iptables详解"></a>iptables详解</h1><h2 id="iptables基础"><a href="#iptables基础" class="headerlink" title="iptables基础"></a>iptables基础</h2><p>iptables规则为预定义的条件，当数据包包头符合条件时候，按规则来处理数据包。规则存储在内核空间信息包过滤表中。这些规则分别指定了源地址，目标地址，传输协议（tcp,udp,icmp等）和服务类型（如http，ftp，smtp等）当数据包与规则匹配时候，iptables根据规则定义的方法处理（accept，reject，drop）</p><h2 id="iptables和netfilter的关系"><a href="#iptables和netfilter的关系" class="headerlink" title="iptables和netfilter的关系"></a>iptables和netfilter的关系</h2><p>iptables只是防火墙的管理工具，netfilter是功能实现</p><h2 id="iptables传输数据包过程"><a href="#iptables传输数据包过程" class="headerlink" title="iptables传输数据包过程"></a>iptables传输数据包过程</h2><ol><li>当一个数据包进入网卡时，首先进入prerouting，内核根据数据包目的IP判断是否要转发出去</li><li>如果数据包是进入本机的，就会向下走，进入input链，这个时候所有进程都可以收到数据包。本机进程发送数据时会进入output链，进入postrouting链输出</li><li>如果数据包是要转发出去，数据包就会如图向右移动，进入forward链，到达postrouting链输出</li></ol><p><img src="../asset/img/iptables.png" alt="hexo image"></p><p>参考链接：<br><a href="https://www.jianshu.com/p/ee4ee15d3658" target="_blank" rel="noopener">https://www.jianshu.com/p/ee4ee15d3658</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;公司的防攻击策略主要是通过iptables进行数据包转发，将真实服务器隐藏在一堆非业务主机后面，这样服务器被攻击的时候，只需要更换服务器ip
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.readytran.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>江影工作总结</title>
+    <link href="http://blog.readytran.com/2019/03/01/%E6%B1%9F%E5%BD%B1%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
+    <id>http://blog.readytran.com/2019/03/01/江影工作总结/</id>
+    <published>2019-03-01T08:15:37.000Z</published>
+    <updated>2019-03-01T08:15:37.118Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>为什么我的tomcat会自行崩溃</title>
+    <link href="http://blog.readytran.com/2019/03/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%9A%84tomcat%E4%BC%9A%E8%87%AA%E8%A1%8C%E5%B4%A9%E6%BA%83/"/>
+    <id>http://blog.readytran.com/2019/03/01/为什么我的tomcat会自行崩溃/</id>
+    <published>2019-03-01T02:24:01.000Z</published>
+    <updated>2019-03-01T02:24:01.315Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>理解redis字符串类型</title>
+    <link href="http://blog.readytran.com/2019/03/01/%E7%90%86%E8%A7%A3redis%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://blog.readytran.com/2019/03/01/理解redis字符串类型/</id>
+    <published>2019-03-01T02:19:59.000Z</published>
+    <updated>2019-03-01T02:19:59.618Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>理解java垃圾回收</title>
+    <link href="http://blog.readytran.com/2019/03/01/%E7%90%86%E8%A7%A3java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    <id>http://blog.readytran.com/2019/03/01/理解java垃圾回收/</id>
+    <published>2019-03-01T02:17:26.000Z</published>
+    <updated>2019-03-01T02:17:26.725Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ios开发者帐号</title>
@@ -44,9 +123,9 @@
     <link href="http://blog.readytran.com/2019/02/28/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
     <id>http://blog.readytran.com/2019/02/28/三次握手四次挥手/</id>
     <published>2019-02-28T08:35:49.000Z</published>
-    <updated>2019-02-28T09:25:37.142Z</updated>
+    <updated>2019-02-28T09:28:55.570Z</updated>
     
-    <content type="html"><![CDATA[<p>常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&apos;</span><br></pre></td></tr></table></figure><ul><li>TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决</li><li>CLOSE_WAIT 1 #表示被动关闭，需要从程序本身出发</li><li>ESTABLISHED 30 #表示正在通信</li></ul><hr><blockquote><p>要了解这个命令产生的结果，需要了解tcp的三次握手，四次挥手. 三次握手是为了建立连接，四次挥手是为了断开连接<br><a id="more"></a></p></blockquote><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ol><li>client端发送请求报文：syn=1,seq=client_sn</li><li>Server接收到请求报文后进行第一次握手并进行资源分配，回复报文：syn=1，seq=server_sn,ack=client_sn+1</li><li>客户端收到server的回复后，进行第二次握手并进行资源分配，回复：syn=0，seq=client_sn+1,ack=server_sn+1</li><li>Server收到客户端的ack报文后为第三次握手，表示连接成功建立</li></ol><h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p>断开连接，可以是服务器断开，也可以是客户端断开。<br>客户端主动断开连接的情况如下：</p><ol><li>客户端发送fin,进入fin_wait状态，表示：客户端没有数据要发给server，请求关闭 （第一次挥手）</li><li>服务端收到fin后，发送ack，说：请求已收到，我还没准备好，请等待。此时连接状态在服务器端为close_wait状态，（第二次挥手） 而客户端进入FIN_wait2状态。</li><li>服务器确认准备好了以后，发送fin给客户端，表示：准备好关闭。（第三次挥手）</li><li>客户端收到FIN后，发送ack给服务端，自身进入time_wait状态。如果server没有收到ack则可以重传 （第四次挥手）</li><li>服务端收到ack后，知道可以关闭，不再回复消息</li><li>客户端等待2MSL后，确认没有收到消息，把连接中断<br><img src="../asset/img/client_1.png" alt="hexo image"><br><img src="../asset/img/server_1.png" alt="hexo image"></li></ol><hr><p>看了上面的情况，大概知道这几个状态的数据是怎么形成的了，以下是解决方案：</p><blockquote><p>通过修改/etc/sysctl.conf文件，服务器能够快速回收和重用TIME_WAIT 的资源</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_syncookies = 1  #表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭         </span><br><span class="line">net.ipv4.tcp_tw_reuse = 1 #表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭  </span><br><span class="line">net.ipv4.tcp_tw_recycle = 1  #表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭    </span><br><span class="line">net.ipv4.tcp_fin_timeout=30 #表示如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间</span><br></pre></td></tr></table></figure><blockquote><p>导致 CLOSE_WAIT 大量存在的原因：就是在对方关闭连接之后服务器程序自己没有进一步发出 ACK 信号。换句话说，就是在对方连接关闭之后，程序里没有检测到，或者程序压根就忘记了这个时候需要关闭连接，于是这个资源就一直被程序占着；服务器对于程序抢占的资源没有主动回收的权利，除非终止程序运行。</p></blockquote><p>解决方案：代码需要判断 socket ，一旦读到 0，断开连接，read 返回负，检查一下 errno，如果不是 AGAIN，就断开连接。<br>所以解决 CLOSE_WAIT 大量存在的方法还是从自身的代码出发。</p>]]></content>
+    <content type="html"><![CDATA[<p>常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&apos;</span><br></pre></td></tr></table></figure><ul><li>TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决</li><li>CLOSE_WAIT 1 #表示被动关闭，需要从程序本身出发</li><li>ESTABLISHED 30 #表示正在通信</li></ul><hr><blockquote><p>要了解这个命令产生的结果，需要了解tcp的三次握手，四次挥手. 三次握手是为了建立连接，四次挥手是为了断开连接<br><a id="more"></a></p></blockquote><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ol><li>client端发送请求报文：syn=1,seq=client_sn</li><li>Server接收到请求报文后进行第一次握手并进行资源分配，回复报文：syn=1，seq=server_sn,ack=client_sn+1</li><li>客户端收到server的回复后，进行第二次握手并进行资源分配，回复：syn=0，seq=client_sn+1,ack=server_sn+1</li><li>Server收到客户端的ack报文后为第三次握手，表示连接成功建立</li></ol><h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p>断开连接，可以是服务器断开，也可以是客户端断开。<br>客户端主动断开连接的情况如下：</p><ol><li>客户端发送fin,进入fin_wait状态，表示：客户端没有数据要发给server，请求关闭 （第一次挥手）</li><li>服务端收到fin后，发送ack，说：请求已收到，我还没准备好，请等待。此时连接状态在服务器端为close_wait状态，（第二次挥手） 而客户端进入FIN_wait2状态。</li><li>服务器确认准备好了以后，发送fin给客户端，表示：准备好关闭。（第三次挥手）</li><li>客户端收到FIN后，发送ack给服务端，自身进入time_wait状态。如果server没有收到ack则可以重传 （第四次挥手）</li><li>服务端收到ack后，知道可以关闭，不再回复消息</li><li>客户端等待2MSL后，确认没有收到消息，把连接中断<br><img src="/asset/img/client_1.png" alt="hexo image"><br><img src="/asset/img/server_1.png" alt="hexo image"></li></ol><hr><p>看了上面的情况，大概知道这几个状态的数据是怎么形成的了，以下是解决方案：</p><blockquote><p>通过修改/etc/sysctl.conf文件，服务器能够快速回收和重用TIME_WAIT 的资源</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_syncookies = 1  #表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭         </span><br><span class="line">net.ipv4.tcp_tw_reuse = 1 #表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭  </span><br><span class="line">net.ipv4.tcp_tw_recycle = 1  #表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭    </span><br><span class="line">net.ipv4.tcp_fin_timeout=30 #表示如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间</span><br></pre></td></tr></table></figure><blockquote><p>导致 CLOSE_WAIT 大量存在的原因：就是在对方关闭连接之后服务器程序自己没有进一步发出 ACK 信号。换句话说，就是在对方连接关闭之后，程序里没有检测到，或者程序压根就忘记了这个时候需要关闭连接，于是这个资源就一直被程序占着；服务器对于程序抢占的资源没有主动回收的权利，除非终止程序运行。</p></blockquote><p>解决方案：代码需要判断 socket ，一旦读到 0，断开连接，read 返回负，检查一下 errno，如果不是 AGAIN，就断开连接。<br>所以解决 CLOSE_WAIT 大量存在的方法还是从自身的代码出发。</p>]]></content>
     
     <summary type="html">
     
