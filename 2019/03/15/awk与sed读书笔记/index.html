@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>为什么我的tomcat会自行崩溃 | 码农人生</title>
+  <title>awk与sed读书笔记 | 码农人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="为什么我的tomcat会自行崩溃">
-<meta property="og:url" content="http://blog.readytran.com/2019/03/01/为什么我的tomcat会自行崩溃/index.html">
+  <meta name="description" content="什么是awk，sed sed是一个面向字符流的编辑器 awk是模式匹配的程序设计语言  #能做什么  sed   在一个或多个文件上自动实现编辑操作 简化对多个文件执行相同的编辑处理工作 编写转换程序   awk   更容易处理多个数据流 定义函数 使用字符串和算术操作符 处理unix命令结果  #怎么做  示例文本内容  list123456789101112131415John Daggett">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="awk与sed读书笔记">
+<meta property="og:url" content="http://blog.readytran.com/2019/03/15/awk与sed读书笔记/index.html">
 <meta property="og:site_name" content="码农人生">
+<meta property="og:description" content="什么是awk，sed sed是一个面向字符流的编辑器 awk是模式匹配的程序设计语言  #能做什么  sed   在一个或多个文件上自动实现编辑操作 简化对多个文件执行相同的编辑处理工作 编写转换程序   awk   更容易处理多个数据流 定义函数 使用字符串和算术操作符 处理unix命令结果  #怎么做  示例文本内容  list123456789101112131415John Daggett">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-01T02:24:01.315Z">
+<meta property="og:updated_time" content="2019-03-19T09:43:37.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么我的tomcat会自行崩溃">
+<meta name="twitter:title" content="awk与sed读书笔记">
+<meta name="twitter:description" content="什么是awk，sed sed是一个面向字符流的编辑器 awk是模式匹配的程序设计语言  #能做什么  sed   在一个或多个文件上自动实现编辑操作 简化对多个文件执行相同的编辑处理工作 编写转换程序   awk   更容易处理多个数据流 定义函数 使用字符串和算术操作符 处理unix命令结果  #怎么做  示例文本内容  list123456789101112131415John Daggett">
   
     <link rel="alternative" href="/atom.xml" title="码农人生" type="application/atom+xml">
   
@@ -157,27 +161,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-为什么我的tomcat会自行崩溃" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-awk与sed读书笔记" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      为什么我的tomcat会自行崩溃
+      awk与sed读书笔记
     </h1>
   
 
         
-        <a href="/2019/03/01/为什么我的tomcat会自行崩溃/" class="archive-article-date">
-  	<time datetime="2019-03-01T02:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
+        <a href="/2019/03/15/awk与sed读书笔记/" class="archive-article-date">
+  	<time datetime="2019-03-15T08:49:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="什么是awk，sed"><a href="#什么是awk，sed" class="headerlink" title="什么是awk，sed"></a>什么是awk，sed</h1><ul>
+<li>sed是一个面向字符流的编辑器</li>
+<li>awk是模式匹配的程序设计语言</li>
+</ul>
+<p>#能做什么</p>
+<ul>
+<li>sed</li>
+</ul>
+<ol>
+<li>在一个或多个文件上自动实现编辑操作</li>
+<li>简化对多个文件执行相同的编辑处理工作</li>
+<li>编写转换程序</li>
+</ol>
+<ul>
+<li>awk</li>
+</ul>
+<ol>
+<li>更容易处理多个数据流</li>
+<li>定义函数</li>
+<li>使用字符串和算术操作符</li>
+<li>处理unix命令结果</li>
+</ol>
+<p>#怎么做</p>
+<blockquote>
+<p>示例文本内容</p>
+</blockquote>
+<p>list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">John Daggett, 341 King Road, Plymouth MA</span><br><span class="line"></span><br><span class="line">Alice Ford, 22 EAST Broadway, Richmond VA</span><br><span class="line"></span><br><span class="line">Orville Thomas, 11345 Oak Bridge Road, Tulsa OK</span><br><span class="line"></span><br><span class="line">Terry Kalkas, 402 Lans Road, Beaver Falls PA</span><br><span class="line"></span><br><span class="line">Eric Adams, 20 Post Road, Sudbury MA</span><br><span class="line"></span><br><span class="line">Hubert Sims, 328A Brook Road, Roanoke VA</span><br><span class="line"></span><br><span class="line">Amy Wilde, 334 Bayshore Pkwy, Mountain View CA</span><br><span class="line"></span><br><span class="line">Sal Carpenter, 73 6th Street, Boston MA</span><br></pre></td></tr></table></figure></p>
+<p>namestate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s/MA/,massachsetts/</span><br><span class="line">s/CA/,california/</span><br><span class="line">s/OK/,OkLaHema/</span><br><span class="line">s/PA/,Penssyvalian/</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>sed用法示例，更多用法使用<code>sed --help</code>查看</li>
+</ul>
+<p>使用命令执行匹配与替换，多个命令用分号隔开: <code>sed -e &#39;s/MA/mmmaaa/;s/VA/vvvaaa/&#39; list</code></p>
+<p>对list文件执行命令脚本: <code>sed -f script list</code></p>
+<p>阻止自动输出每个输入行，使用-n（要生成输出的地方，需要带上打印命令P）: <code>sed -n &#39;s/MA/mmaaa/p&#39; list</code></p>
+<ul>
+<li>awk用法示例</li>
+</ul>
+<p>查询包含MA的行： <code>awk &#39;/MA/&#39; list</code></p>
+<p>查询第一个单词（分隔符默认为空格）： <code>awk &#39;print ${1}&#39; list</code></p>
+<p>查询包含MA的行，并打印第一个单词： <code>awk &#39;/MA/{print $1}&#39; list</code></p>
+<p>将单词分隔符指定为逗号并查询包含MA的行，并打印第一个单词：<code>awk -F, &#39;/MA/{print $1}&#39; list</code></p>
+<ul>
+<li>同时使用sed与awk示例：</li>
+</ul>
+<p>查询满足namestate文件规则的行，分隔符指定为逗号，第四个单词：<code>sed -f namestate list | awk -F, &#39;{print $4}&#39;</code></p>
+
       
 
       
@@ -185,6 +234,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -220,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/03/01/为什么我的tomcat会自行崩溃/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/03/15/awk与sed读书笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -235,18 +295,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/01/江影工作总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          江影工作总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/01/理解redis字符串类型/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">理解redis字符串类型</div>
+    <a href="/2019/03/11/docker笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -276,7 +327,7 @@
   
 
   
-  <div id="SOHUCS" sid="为什么我的tomcat会自行崩溃"></div> 
+  <div id="SOHUCS" sid="awk与sed读书笔记"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -386,11 +437,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -410,11 +461,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
             
             <div class="clearfix"></div>
@@ -483,6 +538,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://zhangjh.me/page/2/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>但丁</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.hollischuang.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>hollis</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.importnew.com/18872.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>importnew</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://cmsblogs.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>java驿站</a>
             </li>
           
         </ul>
