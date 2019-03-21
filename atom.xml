@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.readytran.com/"/>
-  <updated>2019-03-19T09:43:37.871Z</updated>
+  <updated>2019-03-21T15:12:35.628Z</updated>
   <id>http://blog.readytran.com/</id>
   
   <author>
@@ -17,11 +17,93 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>interview</title>
+    <link href="http://blog.readytran.com/2019/03/21/interview/"/>
+    <id>http://blog.readytran.com/2019/03/21/interview/</id>
+    <published>2019-03-21T12:59:07.000Z</published>
+    <updated>2019-03-21T15:12:35.628Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>拷问： 自我介绍</p></blockquote><blockquote><p>拷问： 谈谈你对jvm的理解</p></blockquote><blockquote><p>拷问： 谈谈你对tcp/ip协议的理解</p></blockquote><blockquote><p>拷问： 谈谈你对并发编程的理解</p></blockquote><blockquote><p>拷问： 怎么对系统进行调优<br>jvm参数配置<br>操作系统配置</p></blockquote><p><a href="https://blog.csdn.net/sinat_35512245" target="_blank" rel="noopener">https://blog.csdn.net/sinat_35512245</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;拷问： 自我介绍&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;拷问： 谈谈你对jvm的理解&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;拷问： 谈谈你对tcp/ip协议的理解&lt;/p&gt;
+&lt;/blockq
+      
+    
+    </summary>
+    
+    
+      <category term="interview" scheme="http://blog.readytran.com/tags/interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读书</title>
+    <link href="http://blog.readytran.com/2019/03/21/%E8%AF%BB%E4%B9%A6/"/>
+    <id>http://blog.readytran.com/2019/03/21/读书/</id>
+    <published>2019-03-21T09:33:12.000Z</published>
+    <updated>2019-03-21T09:56:32.462Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h1><p>已读的书</p><blockquote><p>《曾国藩传》</p></blockquote><p>读后感： 以前学习历史的时候，对曾国藩可以说是相当鄙视的，被太平天国打的几次要跳水自杀。读完这本书发现，他比左宗棠还伟大。他本身并不聪明，记忆力很差（比我差远了），身体也不行。但是他一直在致力于做圣人的目标， 为了达成这样的目标，他想尽办法，每天都读书，写日志反省自己。 他提出尚拙的理念，其实就是要自己将基础夯实。很认可他的书要一本一本的读，读完一本再去读下一本的理念。 看完后给自己立下目标，不再想尽办法去搜集下载书，将计划要读的书读好了再去读下一本书，让自己不再浮躁。博客要坚持写下去， 让自己学会思考，而不是一直在接受别人的想法中。 学习曾国藩的为人信条： 不因谄媚而去夸奖，因为那会让你的夸奖显得廉价，让别人对你的夸奖不在乎，如果我每次都是发自内心的夸奖，那么我的夸奖就会让人觉得很开心。</p><blockquote><p>《sed与awk》</p></blockquote><p>偏实操的书，读到后面，难度有点大，走马观花的读完没有去验证，等以后补上吧。 </p><p>计划读的书</p><blockquote><p>《人类简史》</p></blockquote><blockquote><p>《人月神话》</p></blockquote><blockquote><p>《深入理解jvm虚拟机》</p></blockquote><blockquote><p>《spring内幕》</p></blockquote><blockquote><p>《阿里java开发手册》</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;2019&quot;&gt;&lt;a href=&quot;#2019&quot; class=&quot;headerlink&quot; title=&quot;2019&quot;&gt;&lt;/a&gt;2019&lt;/h1&gt;&lt;p&gt;已读的书&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;《曾国藩传》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;读后感： 以前学习
+      
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://blog.readytran.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于并发</title>
+    <link href="http://blog.readytran.com/2019/03/21/%E5%85%B3%E4%BA%8E%E5%B9%B6%E5%8F%91/"/>
+    <id>http://blog.readytran.com/2019/03/21/关于并发/</id>
+    <published>2019-03-21T03:48:53.000Z</published>
+    <updated>2019-03-21T03:51:48.660Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。<br>我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。&lt;br&gt;我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="架构" scheme="http://blog.readytran.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>awk与sed读书笔记</title>
     <link href="http://blog.readytran.com/2019/03/15/awk%E4%B8%8Esed%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>http://blog.readytran.com/2019/03/15/awk与sed读书笔记/</id>
     <published>2019-03-15T08:49:21.000Z</published>
-    <updated>2019-03-19T09:43:37.871Z</updated>
+    <updated>2019-03-19T10:06:22.694Z</updated>
     
     <content type="html"><![CDATA[<h1 id="什么是awk，sed"><a href="#什么是awk，sed" class="headerlink" title="什么是awk，sed"></a>什么是awk，sed</h1><ul><li>sed是一个面向字符流的编辑器</li><li>awk是模式匹配的程序设计语言</li></ul><p>#能做什么</p><ul><li>sed</li></ul><ol><li>在一个或多个文件上自动实现编辑操作</li><li>简化对多个文件执行相同的编辑处理工作</li><li>编写转换程序</li></ol><ul><li>awk</li></ul><ol><li>更容易处理多个数据流</li><li>定义函数</li><li>使用字符串和算术操作符</li><li>处理unix命令结果</li></ol><p>#怎么做</p><blockquote><p>示例文本内容</p></blockquote><p>list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">John Daggett, 341 King Road, Plymouth MA</span><br><span class="line"></span><br><span class="line">Alice Ford, 22 EAST Broadway, Richmond VA</span><br><span class="line"></span><br><span class="line">Orville Thomas, 11345 Oak Bridge Road, Tulsa OK</span><br><span class="line"></span><br><span class="line">Terry Kalkas, 402 Lans Road, Beaver Falls PA</span><br><span class="line"></span><br><span class="line">Eric Adams, 20 Post Road, Sudbury MA</span><br><span class="line"></span><br><span class="line">Hubert Sims, 328A Brook Road, Roanoke VA</span><br><span class="line"></span><br><span class="line">Amy Wilde, 334 Bayshore Pkwy, Mountain View CA</span><br><span class="line"></span><br><span class="line">Sal Carpenter, 73 6th Street, Boston MA</span><br></pre></td></tr></table></figure></p><p>namestate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s/MA/,massachsetts/</span><br><span class="line">s/CA/,california/</span><br><span class="line">s/OK/,OkLaHema/</span><br><span class="line">s/PA/,Penssyvalian/</span><br></pre></td></tr></table></figure></p><ul><li>sed用法示例，更多用法使用<code>sed --help</code>查看</li></ul><p>使用命令执行匹配与替换，多个命令用分号隔开: <code>sed -e &#39;s/MA/mmmaaa/;s/VA/vvvaaa/&#39; list</code></p><p>对list文件执行命令脚本: <code>sed -f script list</code></p><p>阻止自动输出每个输入行，使用-n（要生成输出的地方，需要带上打印命令P）: <code>sed -n &#39;s/MA/mmaaa/p&#39; list</code></p><ul><li>awk用法示例</li></ul><p>查询包含MA的行： <code>awk &#39;/MA/&#39; list</code></p><p>查询第一个单词（分隔符默认为空格）： <code>awk &#39;print ${1}&#39; list</code></p><p>查询包含MA的行，并打印第一个单词： <code>awk &#39;/MA/{print $1}&#39; list</code></p><p>将单词分隔符指定为逗号并查询包含MA的行，并打印第一个单词：<code>awk -F, &#39;/MA/{print $1}&#39; list</code></p><ul><li>同时使用sed与awk示例：</li></ul><p>查询满足namestate文件规则的行，分隔符指定为逗号，第四个单词：<code>sed -f namestate list | awk -F, &#39;{print $4}&#39;</code></p>]]></content>
     
@@ -114,15 +196,15 @@
     <link href="http://blog.readytran.com/2019/03/03/%E7%90%86%E8%A7%A3java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
     <id>http://blog.readytran.com/2019/03/03/理解java垃圾回收/</id>
     <published>2019-03-03T02:17:26.000Z</published>
-    <updated>2019-03-19T03:47:00.631Z</updated>
+    <updated>2019-03-21T09:55:32.939Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。</p><h1 id="调优的"><a href="#调优的" class="headerlink" title="调优的"></a>调优的</h1><h1 id="常用调优操作"><a href="#常用调优操作" class="headerlink" title="常用调优操作"></a>常用调优操作</h1><ul><li><a href="https://segmentfault.com/a/1190000004233812" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004233812</a></li><li><a href="https://blog.csdn.net/wh211212/article/details/80437696" target="_blank" rel="noopener">https://blog.csdn.net/wh211212/article/details/80437696</a></li><li><a href="https://segmentfault.com/a/1190000004233812" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004233812</a></li><li><a href="https://mp.weixin.qq.com/s/MCp16GDT0T0IVwRas6oNcA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/MCp16GDT0T0IVwRas6oNcA</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h1><p>java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。</p><h1 id="常用调优操作"><a href="#常用调优操作" class="headerlink" title="常用调优操作"></a>常用调优操作</h1><p>#相关术语</p><ul><li>CMS垃圾收集算法</li><li>ParNew垃圾收集算法</li><li>minorGC</li><li>fullGC</li><li>老年代</li><li>新生代</li><li>eden</li><li>survivor</li><li>stop the world</li></ul><hr><ul><li><a href="https://segmentfault.com/a/1190000004233812" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004233812</a></li><li><a href="https://blog.csdn.net/wh211212/article/details/80437696" target="_blank" rel="noopener">https://blog.csdn.net/wh211212/article/details/80437696</a></li><li><a href="https://segmentfault.com/a/1190000004233812" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004233812</a></li><li><a href="https://mp.weixin.qq.com/s/MCp16GDT0T0IVwRas6oNcA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/MCp16GDT0T0IVwRas6oNcA</a></li><li><a href="https://blog.51cto.com/andrewli/2130346" target="_blank" rel="noopener">https://blog.51cto.com/andrewli/2130346</a></li><li><a href="https://segmentfault.com/a/1190000010844969" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010844969</a></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解jav
+        &lt;h1 id=&quot;我的理解&quot;&gt;&lt;a href=&quot;#我的理解&quot; class=&quot;headerlink&quot; title=&quot;我的理解&quot;&gt;&lt;/a&gt;我的理解&lt;/h1&gt;&lt;p&gt;java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多
       
     
     </summary>
@@ -137,17 +219,17 @@
     <link href="http://blog.readytran.com/2019/03/01/%E6%B1%9F%E5%BD%B1%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
     <id>http://blog.readytran.com/2019/03/01/江影工作总结/</id>
     <published>2019-03-01T08:15:37.000Z</published>
-    <updated>2019-03-11T09:53:52.800Z</updated>
+    <updated>2019-03-21T15:57:14.478Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>想换个好点的工作，想着面试的时候肯定会问一些过往工作经历，那么就写一个博客边回忆边梳理一下吧。</p><h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><p>来到公司后的第一件事情就是</p><h1 id="用到的技术"><a href="#用到的技术" class="headerlink" title="用到的技术"></a>用到的技术</h1><p>来到公司后</p><h1 id="我的贡献"><a href="#我的贡献" class="headerlink" title="我的贡献"></a>我的贡献</h1><h1 id="收获与不足"><a href="#收获与不足" class="headerlink" title="收获与不足"></a>收获与不足</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>最近总是很焦虑， 对工作很焦虑，对公司发展焦虑，对个人的发展焦虑。</p><h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><ul><li>后台管理系统</li></ul><p>来到公司后的第一件事情就是让给公司做一个监控管理平台，参考友盟后台弄，问我多长时间能弄好，我基本上没犹豫就说一周差不多就能弄好，因为我之前也做过一些管理系统，开发相对简单。后来的结果是我用django+easyui做了一个后台管理系统，只满足了能够查询用户注册数据，用户充值数据，注册和充值统计报表功能。根据后来我慢慢了解到的需求，原来我是需要做一个插件给游戏客户端，用来收集留存，活跃等数据信息。一个后台系统，用来查看管理这些数据信息。这个系统做的很失败，一开始就做错了。现在回顾分析下来，主要有几点原因：<a id="more"></a></p><ol><li>我并没有做过游戏行业，将这个管理后台当成了一般的crud功能性的后台</li><li>没有一个很好的需求说明，自始至终都是让参考友盟，不知道如何下手 </li><li>一开始在需求丝毫不知的情况下，毫无业务了解的情况下夸下了海口，导致后续朝简单的方面去思考</li></ol><p>以上几点原因有人的性格问题，有公司的制度原因，后来几年一直围绕后台打口水战，一直被鄙视，而我一直是不服气的。按结果导向来说，我是失败了，希望以此为鉴。如果再发生此种场景应如何呢？ 首先不要急于去表现，了解清楚情况后再立下承诺。其次，多加沟通，沟通多了别人就会知道进度情况，沟通多了自然就可以对项目的把控，对需求的理解更加深刻。</p><hr><ul><li>接口服务</li></ul><p>在公司做的第二件事情就是接手游戏服务接口设计开发。我最感兴趣的就是这块了。当时来公司的时候写了三年python，觉得python写起来很舒服，技术选型就选了python，框架使用了django+redis，采用uwsgi+nginx部署。这个接口系统在前期没有注意并发情况，导致出现了刷金币的恶劣事件，后面就一直很稳定了，并发能力也高，高到什么程度呢：每秒可以支撑同时在线用户上万，百万级别不成问题，并发安全使用了redis锁来处理分布式并发，完全满足了游戏接口处理能力。</p><ul><li>直播系统</li></ul><p>公司当时还是很能赚钱的，一年能有8000万的流水不是开玩笑的。于是公司就找了一个小团队做直播，种种原因之下，决定将直播接手过来自己开发。于是我和另外一个小伙伴两个人开始了直播的网站开发，直播的手机端接口开发，接口文档。我充当了项目经理加技术主管加高级开发的角色。每天都要打很多电话和深圳团队（客户端）沟通接口需求，要催进度，要研究直播流程（当时完全不懂怎么玩）。经过了大量加班，把原来的网站（php）改造成了springmvc+mybatis+freemarker架构的直播网站。flash工程没改好，socket服务器没有改动，http接口改好了。 推流拉流都很熟悉了。存储过程全面了解了。算是一个半成品吧。 过程很痛苦，当时游戏的业务很大，总共两个人，又要做游戏活动，又要研究开发直播系统。结果也是很痛，只能算半成品。 因为flash那块是直接拿过来用，客户端连接的socket端是c#开发。本想着用netty改造掉socket服务端，上头不允许，理由是不信任我们。<br>直播系统推广以后，要做各种活动，我们没有ui，只有美术出了psd图，为了这个psd图转成活动页面，我在加班一天无果后，在技术群出100块钱找了一个在校生完成。特意记录这个事情，是觉得很有意思，我自掏腰包弄的。</p><ul><li>汽车app</li></ul><p>公司管理层的又一个拍脑袋作品， 团队里面一个小伙子设计开发的，采用mui做前端，springmvc+mybatis作为后端接口开发。我在里面的角色是前期项目管理，需求沟通。</p><ul><li>爱好圈</li></ul><p>由于微信对红包群的封杀，导致房卡类游戏没法进行开展，决定自研一个聊天兼具红包功能的app。我负责项目数据库设计，需求分析后传达到团队并分配任务（项目经理+架构师？），部分开发任务。 采用了pb数据传输协议，springmvc+mybatis作为技术后端。</p><ul><li>房卡app</li></ul><p>给房卡游戏提供支撑的一个app， 主要用户为游戏代理。我负责部分后端接口开发任务，后期负责ios的app维护开发。一开始是网页形式，后来要形成app，我提出使用cordova进行加壳，既快速也方便维护。只可惜后来因为一个dns劫持的问题（我觉得主要原因可能是老板对深圳开发人员闲置的一个资源利用）</p><hr><h1 id="一点思考"><a href="#一点思考" class="headerlink" title="一点思考"></a>一点思考</h1><ul><li>来到这个公司后， 公司的技术比较陈旧，仍然在使用struts1. 老板秉承的是能用至上原则，所以基本上在公司没学习到什么新技术，也没有积累到可以吹嘘的资本。</li><li>公司主要靠游戏赚钱， 我做的工作属于偏外围的工作， 非常忙碌，感觉身体跨了不少。忙碌也让我觉得自己很有价值，没有去思考未来，思考自己的职业。</li><li>我在公司的贡献：推动了部分新技术，如使用了mybatis替换之前用的jdbctemplate，最大的好处是可以自动生成代码，减少了工作量。采用了jekeins进行应用部署， 推动公司代码仓库使用git， 推动springboot的应用，编写了很多自动化python脚本， 如：机器人生成脚本，定期清理日志脚本，进程监控脚本。</li></ul><blockquote><p>以上几点可以看出， 这段工作经历对我的职业发展不太有利， 既没有参与核心业务，也没有技术上的成长。不知道现在明白是否还来得及？ 很焦虑！</p></blockquote>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;想换个好点的工作，想着面试的时候肯定会问一些过往工作经历，那么就写一个博客边回忆边梳理一下吧。&lt;/p&gt;
-&lt;h1 id=&quot;工作经历&quot;&gt;&lt;a h
-      
+      &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;最近总是很焦虑， 对工作很焦虑，对公司发展焦虑，对个人的发展焦虑。&lt;/p&gt;
+&lt;h1 id=&quot;回顾&quot;&gt;&lt;a href=&quot;#回顾&quot; class=&quot;headerlink&quot; title=&quot;回顾&quot;&gt;&lt;/a&gt;回顾&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;后台管理系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来到公司后的第一件事情就是让给公司做一个监控管理平台，参考友盟后台弄，问我多长时间能弄好，我基本上没犹豫就说一周差不多就能弄好，因为我之前也做过一些管理系统，开发相对简单。后来的结果是我用django+easyui做了一个后台管理系统，只满足了能够查询用户注册数据，用户充值数据，注册和充值统计报表功能。根据后来我慢慢了解到的需求，原来我是需要做一个插件给游戏客户端，用来收集留存，活跃等数据信息。一个后台系统，用来查看管理这些数据信息。这个系统做的很失败，一开始就做错了。现在回顾分析下来，主要有几点原因：
     
     </summary>
     

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.readytran.com">
   <title>理解java垃圾回收 | 码农人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引言java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 调优的常用调优操作 https://segmentfault.com/a/1190000004233812 https://blo">
+  <meta name="description" content="我的理解java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 常用调优操作#相关术语  CMS垃圾收集算法 ParNew垃圾收集算法 minorGC fullGC 老年代 新生代 eden">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解java垃圾回收">
 <meta property="og:url" content="http://blog.readytran.com/2019/03/03/理解java垃圾回收/index.html">
 <meta property="og:site_name" content="码农人生">
-<meta property="og:description" content="引言java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 调优的常用调优操作 https://segmentfault.com/a/1190000004233812 https://blo">
+<meta property="og:description" content="我的理解java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 常用调优操作#相关术语  CMS垃圾收集算法 ParNew垃圾收集算法 minorGC fullGC 老年代 新生代 eden">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-19T03:47:00.631Z">
+<meta property="og:updated_time" content="2019-03-21T09:55:32.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解java垃圾回收">
-<meta name="twitter:description" content="引言java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 调优的常用调优操作 https://segmentfault.com/a/1190000004233812 https://blo">
+<meta name="twitter:description" content="我的理解java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 常用调优操作#相关术语  CMS垃圾收集算法 ParNew垃圾收集算法 minorGC fullGC 老年代 新生代 eden">
   
     <link rel="alternative" href="/atom.xml" title="码农人生" type="application/atom+xml">
   
@@ -181,12 +181,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。</p>
-<h1 id="调优的"><a href="#调优的" class="headerlink" title="调优的"></a>调优的</h1><h1 id="常用调优操作"><a href="#常用调优操作" class="headerlink" title="常用调优操作"></a>常用调优操作</h1><ul>
+        <h1 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h1><p>java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。</p>
+<h1 id="常用调优操作"><a href="#常用调优操作" class="headerlink" title="常用调优操作"></a>常用调优操作</h1><p>#相关术语</p>
+<ul>
+<li>CMS垃圾收集算法</li>
+<li>ParNew垃圾收集算法</li>
+<li>minorGC</li>
+<li>fullGC</li>
+<li>老年代</li>
+<li>新生代</li>
+<li>eden</li>
+<li>survivor</li>
+<li>stop the world</li>
+</ul>
+<hr>
+<ul>
 <li><a href="https://segmentfault.com/a/1190000004233812" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004233812</a></li>
 <li><a href="https://blog.csdn.net/wh211212/article/details/80437696" target="_blank" rel="noopener">https://blog.csdn.net/wh211212/article/details/80437696</a></li>
 <li><a href="https://segmentfault.com/a/1190000004233812" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004233812</a></li>
 <li><a href="https://mp.weixin.qq.com/s/MCp16GDT0T0IVwRas6oNcA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/MCp16GDT0T0IVwRas6oNcA</a></li>
+<li><a href="https://blog.51cto.com/andrewli/2130346" target="_blank" rel="noopener">https://blog.51cto.com/andrewli/2130346</a></li>
+<li><a href="https://segmentfault.com/a/1190000010844969" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010844969</a></li>
 </ul>
 
       
@@ -416,6 +431,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">interview</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ios</a>
               </li>
              
@@ -432,7 +451,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -440,7 +463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
             
             <div class="clearfix"></div>
