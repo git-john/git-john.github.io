@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.readytran.com/2019/03/25/%E9%9D%A2%E8%AF%951/</loc>
+    <loc>http://blog.readytran.com/2019/03/21/interview/</loc>
     
-    <lastmod>2019-03-25T07:41:34.502Z</lastmod>
+    <lastmod>2019-03-26T16:28:45.038Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.readytran.com/2019/03/21/interview/</loc>
+    <loc>http://blog.readytran.com/2019/03/21/%E8%AF%BB%E4%B9%A6/</loc>
     
-    <lastmod>2019-03-25T06:51:50.336Z</lastmod>
+    <lastmod>2019-03-26T16:12:08.586Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.readytran.com/2019/03/26/redis%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-03-26T16:06:46.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.readytran.com/2019/03/26/redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</loc>
+    
+    <lastmod>2019-03-26T06:33:59.498Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.readytran.com/2019/03/25/%E9%9D%A2%E8%AF%951/</loc>
+    
+    <lastmod>2019-03-25T07:41:34.502Z</lastmod>
     
   </url>
   
@@ -47,13 +68,6 @@
     <loc>http://blog.readytran.com/2019/02/28/ios%E5%BC%80%E5%8F%91%E8%80%85%E5%B8%90%E5%8F%B7/</loc>
     
     <lastmod>2019-03-22T03:51:58.064Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.readytran.com/2019/03/21/%E8%AF%BB%E4%B9%A6/</loc>
-    
-    <lastmod>2019-03-21T16:04:26.577Z</lastmod>
     
   </url>
   
