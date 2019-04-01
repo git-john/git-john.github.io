@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>理解java垃圾回收 | 码农人生</title>
+  <title>理解java垃圾回收 | 码到秃头！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我的理解java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 常用调优操作#相关术语  CMS垃圾收集算法 ParNew垃圾收集算法 minorGC fullGC 老年代 新生代 eden">
+  <meta name="description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解java垃圾回收">
 <meta property="og:url" content="http://blog.readytran.com/2019/03/03/理解java垃圾回收/index.html">
-<meta property="og:site_name" content="码农人生">
-<meta property="og:description" content="我的理解java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 常用调优操作#相关术语  CMS垃圾收集算法 ParNew垃圾收集算法 minorGC fullGC 老年代 新生代 eden">
+<meta property="og:site_name" content="码到秃头！">
+<meta property="og:description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T09:55:32.939Z">
+<meta property="og:updated_time" content="2019-03-31T08:11:15.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解java垃圾回收">
-<meta name="twitter:description" content="我的理解java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。 常用调优操作#相关术语  CMS垃圾收集算法 ParNew垃圾收集算法 minorGC fullGC 老年代 新生代 eden">
+<meta name="twitter:description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
   
-    <link rel="alternative" href="/atom.xml" title="码农人生" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="码到秃头！" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -54,7 +54,7 @@
 		  <h1 class="header-author"><a href="/">John KANG</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">技术博客，随笔，技术沉淀总结</p>
+		<p class="header-subtitle">最好的学习时机是工作前三年与现在</p>
 		
 
 		<nav class="header-menu">
@@ -112,7 +112,7 @@
 			  <h1 class="header-author js-header-author">John KANG</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>技术博客，随笔，技术沉淀总结<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>最好的学习时机是工作前三年与现在<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -181,7 +181,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h1><p>java垃圾回收一直是各大面试官重点考察对象，如果连java垃圾回收都不理解的话， 是不能称为懂Java的。我虽然工作这么多年，也了解java垃圾回收，但是由于平时调优工作少，也不能很流畅的叙述出来。 这篇笔记通过查阅资料，以实操的方式来理解java内存回收机制。</p>
+        <h1 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h1><ul>
+<li>jvm的组成部分及其作用：<ul>
+<li>主要由四部分组成：<strong>类加载器+运行时数据区+指令引擎+本地接口库</strong>。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。</li>
+</ul>
+</li>
+<li>jvm运行时数据区的理解：<ul>
+<li>jvm运行时数据区包括5个部分：<strong>程序计数器（program counter register）+java虚拟机栈+本地方法栈+java堆+方法区</strong>。</li>
+<li>程序计数器是线程私有的一块内存空间，记录正在执行的虚拟机字节码指令的地址。分支，循环，跳转，线程恢复时，需要根据这个记录值完成操作。</li>
+<li>java虚拟机栈也是线程私有的一块空间，主要用来记录局部变量（基本类型值或者应用类型的指针），方法参数，方法调用，返回值</li>
+<li>本地方法栈也是线程私有的一块空间，和java虚拟机栈类似，不过服务的对象是本地方法</li>
+<li>java堆：线程共享的一块比较大的内存，是java虚拟机中最大的一块内存，里面主要用来存放对象实例</li>
+<li>方法区：用来存储类信息，常量，静态变量，即时编译后的代码等数据</li>
+</ul>
+</li>
+<li>jvm堆与栈的区别：<ul>
+<li>1.栈内存存储的是基本类型和指针，而堆内存存储的是实例；</li>
+<li>2.栈内存的更新速度要快于堆内存，因为局部变量的生命周期很短；</li>
+<li>3.栈内存存放的变量生命周期一旦结束就会被释放，而堆内存存放的实体会被垃圾回收机制不定时的回收。</li>
+</ul>
+</li>
+<li>队列和栈是什么？有什么区别？<ul>
+<li>队列是两头都通的，所以先进先出</li>
+<li>栈是底部不通，所以后进先出</li>
+</ul>
+</li>
+<li>什么是双亲委派模型？<ul>
+<li>类加载器从上到下有这几种类型：启动类加载器-》扩展类加载器-》应用程序加载器-》系统（应用）类加载器-》自定义的类加载器。每个类加载器都有父类加载器这样的层级关系，这个模型就是双亲委派模型。</li>
+</ul>
+</li>
+<li>新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？<ul>
+<li>新生代收集器：<ul>
+<li>serial（串行）收集器，由虚拟机后台发起，stop the world，只留一个线程来进行垃圾收集，基于复制算法</li>
+<li>parnew收集器，serial收集器的多线程版本</li>
+<li>Parallel Scavenge 收集器： 没看懂，控制吞吐量的收集器</li>
+</ul>
+</li>
+<li>老年代收集器：<ul>
+<li>serial old收集器：单线程收集器，采用标记-整理算法。</li>
+<li>Parallel Old收集器： 没看懂，后面接着研究</li>
+<li>CMS收集器：获取<strong>最短回收停顿时间</strong>为目标,基于<strong>标记-清除算法</strong>实现. 1. 标记GC roots能直接关联到的对象，需要stw。2.并发标记，GC ROOTS tracing。 3.重新标记，需要stw，修复在第二步并发标记期间的变动 4. 进行并发清除</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分代垃圾回收器是怎么工作的<ul>
+<li>由于不同对象的生命周期不一样， 因此将他们进行分代管理有利于提供垃圾回收的效率。</li>
+<li>分为三代：轻轻代，年老代，持久代。持久代主要存放java的类信息，与垃圾回收关系不大。<ul>
+<li>年轻代： 分为eden区和两个suvivor区， eden空间不足时会触发minor gc。minor gc时，会清除eden区的非存活对象， 将还存活对象复制到其中一个survivor区，如果这个区满了的话，之前该区的存活对象复制到另外一个区，如果另外一个区也满了，就将这些对象放到老年代去。</li>
+<li>年老代： 经历了多次垃圾回收，仍然存活的对象， 将会被放到年老代。年老代的垃圾回收为full gc。在持久代，年老代被写满的时候会触发，调用system.gc也会触发。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h1 id="常用调优操作"><a href="#常用调优操作" class="headerlink" title="常用调优操作"></a>常用调优操作</h1><p>#相关术语</p>
 <ul>
 <li>CMS垃圾收集算法</li>
@@ -419,15 +472,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,7 +492,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,11 +504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">interview</a>
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,11 +512,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>

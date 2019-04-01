@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>三次握手四次挥手 | 码到秃头！</title>
+  <title>dubbo搭建demo | 码到秃头！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
-<meta name="keywords" content="tcp">
+  <meta name="description" content="组件zookeeper 注册中心consumer  消费端provider 服务提供者 环境安装zookeeper 什么是zookeeper？   zookeeper: 分布式协调服务，分布式系统中共享配置，协调锁资源，提供命名服务。数据存储为树型目录。  安装zookeeper  下载：https://mirrors.cnnic.cn/apache/zookeeper/stable/ 解压，修改">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三次握手四次挥手">
-<meta property="og:url" content="http://blog.readytran.com/2019/02/28/三次握手四次挥手/index.html">
+<meta property="og:title" content="dubbo搭建demo">
+<meta property="og:url" content="http://blog.readytran.com/2019/03/28/dubbo搭建demo/index.html">
 <meta property="og:site_name" content="码到秃头！">
-<meta property="og:description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
+<meta property="og:description" content="组件zookeeper 注册中心consumer  消费端provider 服务提供者 环境安装zookeeper 什么是zookeeper？   zookeeper: 分布式协调服务，分布式系统中共享配置，协调锁资源，提供命名服务。数据存储为树型目录。  安装zookeeper  下载：https://mirrors.cnnic.cn/apache/zookeeper/stable/ 解压，修改">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://blog.readytran.com/asset/img/client_1.png">
-<meta property="og:image" content="http://blog.readytran.com/asset/img/server_1.png">
-<meta property="og:updated_time" content="2019-02-28T09:28:55.570Z">
+<meta property="og:updated_time" content="2019-04-01T02:24:53.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三次握手四次挥手">
-<meta name="twitter:description" content="常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数 1netstat -n | awk &amp;apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#123;for(a in S) print a, S[a]&amp;#125;&amp;apos;  TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决 CLOSE_WA">
-<meta name="twitter:image" content="http://blog.readytran.com/asset/img/client_1.png">
+<meta name="twitter:title" content="dubbo搭建demo">
+<meta name="twitter:description" content="组件zookeeper 注册中心consumer  消费端provider 服务提供者 环境安装zookeeper 什么是zookeeper？   zookeeper: 分布式协调服务，分布式系统中共享配置，协调锁资源，提供命名服务。数据存储为树型目录。  安装zookeeper  下载：https://mirrors.cnnic.cn/apache/zookeeper/stable/ 解压，修改">
   
     <link rel="alternative" href="/atom.xml" title="码到秃头！" type="application/atom+xml">
   
@@ -164,62 +161,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-三次握手四次挥手" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-dubbo搭建demo" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      三次握手四次挥手
+      dubbo搭建demo
     </h1>
   
 
         
-        <a href="/2019/02/28/三次握手四次挥手/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:35:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
+        <a href="/2019/03/28/dubbo搭建demo/" class="archive-article-date">
+  	<time datetime="2019-03-28T01:55:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常用查询linux服务器性能的一个命令，查询服务器请求连接状态，这个命令会列出请求的状态以及对应的请求个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&apos;</span><br></pre></td></tr></table></figure>
+        <h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>zookeeper 注册中心<br>consumer  消费端<br>provider 服务提供者</p>
+<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><h2 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h2><ul>
+<li><p>什么是zookeeper？</p>
+<p>  zookeeper: 分布式协调服务，分布式系统中共享配置，协调锁资源，提供命名服务。数据存储为树型目录。</p>
+</li>
+<li><p>安装zookeeper</p>
 <ul>
-<li>TIME_WAIT 28 #表示主动关闭，通过优化系统内核参数可容易解决</li>
-<li>CLOSE_WAIT 1 #表示被动关闭，需要从程序本身出发</li>
-<li>ESTABLISHED 30 #表示正在通信</li>
+<li>下载：<a href="https://mirrors.cnnic.cn/apache/zookeeper/stable/" target="_blank" rel="noopener">https://mirrors.cnnic.cn/apache/zookeeper/stable/</a></li>
+<li>解压，修改配置文件- 将conf/zoo_sample.cfg复制为conf/zoo.cfg，修改配置项<ul>
+<li>tickTime：这个时间是作为 Zookeeper 服务器之间或客户端与服务器之间维持心跳的时间间隔，也就是每个 tickTime 时间就会发送一个心跳。</li>
+<li>dataDir：顾名思义就是 Zookeeper 保存数据的目录，默认情况下，Zookeeper 将写数据的日志文件也保存在这个目录里。</li>
+<li>dataLogDir：顾名思义就是 Zookeeper 保存日志文件的目录</li>
+<li>clientPort：这个端口就是客户端连接 Zookeeper 服务器的端口，Zookeeper 会监听这个端口，接受客户端的访问请求。</li>
 </ul>
+</li>
+<li>启动： 进入bin目录，启动zkServer.cmd</li>
+</ul>
+</li>
+<li><p>安装redis服务器（非必须，我这个demo用来做session中心化）</p>
+</li>
+</ul>
+<h1 id="编写provider模块"><a href="#编写provider模块" class="headerlink" title="编写provider模块"></a>编写provider模块</h1><p>采用的xml配置模式， 主要配置以下内容：</p>
+<ul>
+<li>dubbo:application   -&gt; 服务应用名称</li>
+<li>dubbo:registry      -&gt; 注册中心地址配置，这里配置的是zookeeper，官方demo用的是multicast</li>
+<li>dubbo:service       -&gt; 定义服务id，暴露给消费者, 需要定一个bean用于服务的具体实现。跟最开始的spring配置没差别</li>
+<li>dubbo:protocol      -&gt; 定义为dubbo协议， 可能是用于扩展用吧， 搞不懂为什么要配置这个，都是固定死的</li>
+</ul>
+<p>具体实现比较简单，就是查询一个数据库表单数据，然后将表单数据序列化。</p>
+<h1 id="编写consumer模块"><a href="#编写consumer模块" class="headerlink" title="编写consumer模块"></a>编写consumer模块</h1><p>采用的xml配置模式， 主要配置以下内容：</p>
+<ul>
+<li>dubbo:application   -&gt; 服务应用名称</li>
+<li>dubbo:registry      -&gt; 注册中心地址配置，这里配置的是zookeeper，官方demo用的是multicast</li>
+<li>dubbo:reference     -&gt; 远程服务，导入jar包即可使用</li>
+</ul>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>启动provider， consumer。 通过浏览器访问consumer提供的网页。 </p>
 <hr>
-<blockquote>
-<p>要了解这个命令产生的结果，需要了解tcp的三次握手，四次挥手. 三次握手是为了建立连接，四次挥手是为了断开连接<br><a id="more"></a></p>
-</blockquote>
-<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ol>
-<li>client端发送请求报文：syn=1,seq=client_sn</li>
-<li>Server接收到请求报文后进行第一次握手并进行资源分配，回复报文：syn=1，seq=server_sn,ack=client_sn+1</li>
-<li>客户端收到server的回复后，进行第二次握手并进行资源分配，回复：syn=0，seq=client_sn+1,ack=server_sn+1</li>
-<li>Server收到客户端的ack报文后为第三次握手，表示连接成功建立</li>
-</ol>
-<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p>断开连接，可以是服务器断开，也可以是客户端断开。<br>客户端主动断开连接的情况如下：</p>
-<ol>
-<li>客户端发送fin,进入fin_wait状态，表示：客户端没有数据要发给server，请求关闭 （第一次挥手）</li>
-<li>服务端收到fin后，发送ack，说：请求已收到，我还没准备好，请等待。此时连接状态在服务器端为close_wait状态，（第二次挥手） 而客户端进入FIN_wait2状态。</li>
-<li>服务器确认准备好了以后，发送fin给客户端，表示：准备好关闭。（第三次挥手）</li>
-<li>客户端收到FIN后，发送ack给服务端，自身进入time_wait状态。如果server没有收到ack则可以重传 （第四次挥手）</li>
-<li>服务端收到ack后，知道可以关闭，不再回复消息</li>
-<li>客户端等待2MSL后，确认没有收到消息，把连接中断<br><img src="/asset/img/client_1.png" alt="hexo image"><br><img src="/asset/img/server_1.png" alt="hexo image"></li>
-</ol>
-<hr>
-<p>看了上面的情况，大概知道这几个状态的数据是怎么形成的了，以下是解决方案：</p>
-<blockquote>
-<p>通过修改/etc/sysctl.conf文件，服务器能够快速回收和重用TIME_WAIT 的资源</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_syncookies = 1  #表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭         </span><br><span class="line">net.ipv4.tcp_tw_reuse = 1 #表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭  </span><br><span class="line">net.ipv4.tcp_tw_recycle = 1  #表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭    </span><br><span class="line">net.ipv4.tcp_fin_timeout=30 #表示如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>导致 CLOSE_WAIT 大量存在的原因：就是在对方关闭连接之后服务器程序自己没有进一步发出 ACK 信号。换句话说，就是在对方连接关闭之后，程序里没有检测到，或者程序压根就忘记了这个时候需要关闭连接，于是这个资源就一直被程序占着；服务器对于程序抢占的资源没有主动回收的权利，除非终止程序运行。</p>
-</blockquote>
-<p>解决方案：代码需要判断 socket ，一旦读到 0，断开连接，read 返回负，检查一下 errno，如果不是 AGAIN，就断开连接。<br>所以解决 CLOSE_WAIT 大量存在的方法还是从自身的代码出发。</p>
+<p>对公司的产品线重构成微服务的一点思考。目前公司的工程很多，包括： 管理后台， pc充值系统， 手机充值系统， 接口服务。<br>每个系统都需要访问数据库，编写重复的model，充值服务分散在三个工程里面，充值回调接口也分散在不同的工程。用户注册还好，都是调用的http接口，或者直接嵌入一个公用网页。</p>
+<p>那么应该怎么改造呢，改造是为了查问题方便，代码复用。 首先，需要建立一个工作空间，将各个工程模块化，这样可以统一管理工程。 其次，将各service接口抽出来形成一个模块，比如充值，注册，充值参数可以用数据库管理起来。最后就是各种工具包可以独立成模块了，包括各种vo都形成可以打jar包的模块，这样可以避免浪费时间写这些重复代码。 </p>
+<p>问题：功能都独立成模块后，如果改动了公用模块， 引用方要怎么更新呢， 不需要更新的时候怎么办？</p>
 
       
 
@@ -233,7 +234,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tcp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -274,7 +275,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/02/28/三次握手四次挥手/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/03/28/dubbo搭建demo/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,18 +290,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/02/28/ios开发者帐号/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/31/zookeeper学习/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          ios开发者帐号
+          zookeeper学习
         
       </div>
     </a>
   
   
-    <a href="/2019/02/19/lsyncd安装与配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lsyncd多目录同步</div>
+    <a href="/2019/03/26/redis实战读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis实战读书笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -330,7 +331,7 @@
   
 
   
-  <div id="SOHUCS" sid="三次握手四次挥手"></div> 
+  <div id="SOHUCS" sid="dubbo搭建demo"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
