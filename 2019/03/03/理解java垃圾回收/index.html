@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>理解java垃圾回收 | 码到秃头！</title>
+  <title>理解java垃圾回收 | johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解java垃圾回收">
 <meta property="og:url" content="http://blog.readytran.com/2019/03/03/理解java垃圾回收/index.html">
-<meta property="og:site_name" content="码到秃头！">
+<meta property="og:site_name" content="johnkang&#39;s blog">
 <meta property="og:description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T08:11:15.258Z">
+<meta property="og:updated_time" content="2019-04-07T14:36:21.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解java垃圾回收">
 <meta name="twitter:description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
   
-    <link rel="alternative" href="/atom.xml" title="码到秃头！" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -228,7 +228,7 @@
 <li>分代垃圾回收器是怎么工作的<ul>
 <li>由于不同对象的生命周期不一样， 因此将他们进行分代管理有利于提供垃圾回收的效率。</li>
 <li>分为三代：轻轻代，年老代，持久代。持久代主要存放java的类信息，与垃圾回收关系不大。<ul>
-<li>年轻代： 分为eden区和两个suvivor区， eden空间不足时会触发minor gc。minor gc时，会清除eden区的非存活对象， 将还存活对象复制到其中一个survivor区，如果这个区满了的话，之前该区的存活对象复制到另外一个区，如果另外一个区也满了，就将这些对象放到老年代去。</li>
+<li>年轻代： 分为eden区、from区，to区， eden空间不足时会触发minor gc。minor gc时(serial串行回收器)，将eden的活跃对象（活跃对象的判断试通过可达性分析来判断的）复制到to区，而from区的对象会根据年龄大小（每熬过一次gc增加一岁）决定去留。复制完成后，清空eden区和from区，交换from区和to区， 以保证to区永远是空的。如果在复制过程中，to区被填满了， 那么to区的所有内存会被移动到老年代。</li>
 <li>年老代： 经历了多次垃圾回收，仍然存活的对象， 将会被放到年老代。年老代的垃圾回收为full gc。在持久代，年老代被写满的时候会触发，调用system.gc也会触发。</li>
 </ul>
 </li>
@@ -496,11 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,7 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,7 +520,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>

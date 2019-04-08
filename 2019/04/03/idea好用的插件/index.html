@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>Tag: tcp | johnkang&#39;s blog</title>
+  <title>idea好用的插件 | johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="johnkang&#39;s blog">
-<meta property="og:url" content="http://blog.readytran.com/tags/tcp/index.html">
+  <meta name="description" content="Mybatis-Generator自动构建插件 安装方法 打开IDEA -&amp;gt; File -&amp;gt; Settings… -&amp;gt; Plugins -&amp;gt; 点击”browse repositories” -&amp;gt; 搜索better-mybatis-generator -&amp;gt; Install，这样就可以安装了，安装完成后记得重启IDEA   使用方法 配置插件：打开IDEA -&amp;gt">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="idea好用的插件">
+<meta property="og:url" content="http://blog.readytran.com/2019/04/03/idea好用的插件/index.html">
 <meta property="og:site_name" content="johnkang&#39;s blog">
+<meta property="og:description" content="Mybatis-Generator自动构建插件 安装方法 打开IDEA -&amp;gt; File -&amp;gt; Settings… -&amp;gt; Plugins -&amp;gt; 点击”browse repositories” -&amp;gt; 搜索better-mybatis-generator -&amp;gt; Install，这样就可以安装了，安装完成后记得重启IDEA   使用方法 配置插件：打开IDEA -&amp;gt">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-03T03:33:04.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="johnkang&#39;s blog">
+<meta name="twitter:title" content="idea好用的插件">
+<meta name="twitter:description" content="Mybatis-Generator自动构建插件 安装方法 打开IDEA -&amp;gt; File -&amp;gt; Settings… -&amp;gt; Plugins -&amp;gt; 点击”browse repositories” -&amp;gt; 搜索better-mybatis-generator -&amp;gt; Install，这样就可以安装了，安装完成后记得重启IDEA   使用方法 配置插件：打开IDEA -&amp;gt">
   
     <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
   
@@ -156,60 +161,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-idea好用的插件" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/三次握手四次挥手/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:35:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/三次握手四次挥手/">三次握手四次挥手</a>
+    <h1 class="article-title" itemprop="name">
+      idea好用的插件
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/03/idea好用的插件/" class="archive-article-date">
+  	<time datetime="2019-04-03T02:40:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis-Generator自动构建插件"><a href="#Mybatis-Generator自动构建插件" class="headerlink" title="Mybatis-Generator自动构建插件"></a>Mybatis-Generator自动构建插件</h1><ul>
+<li>安装方法<ul>
+<li>打开IDEA -&gt; File -&gt; Settings… -&gt; Plugins -&gt; 点击”browse repositories” -&gt; 搜索better-mybatis-generator -&gt; Install，这样就可以安装了，安装完成后记得重启IDEA</li>
+</ul>
+</li>
+<li>使用方法<ul>
+<li>配置插件：打开IDEA -&gt; File -&gt; Settings… -&gt; Tools -&gt; Mybatis generator plugin，就可以看到配置界面。只要配置好对应的model，dao，xml路径即可。其他一般都不需要动。</li>
+<li>添加数据库：在IDEA界面右侧选择Database -&gt; 选择+号 -&gt; Data Source -&gt; 选择添加的数据库。 这时候会弹出配置数据库名，用户，密码界面，配置即可。</li>
+<li>生成代码：点击database里面的表，选择mybatis generate</li>
+</ul>
+</li>
+</ul>
+<h1 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h1><pre><code>项目中经常使用bean，entity等类，绝大部分数据类类中都需要get、set、toString、equals和hashCode方法，虽然eclipse和idea开发环境下都有自动生成的快捷方式，但自动生成这些代码后，如果bean中的属性一旦有修改、删除或增加时，需要重新生成或删除get/set等方法，给代码维护增加负担。而使用了lombok则不一样，使用了lombok的注解(@Setter,@Getter,@ToString,@@RequiredArgsConstructor,@EqualsAndHashCode或@Data)之后，就不需要编写或生成get/set等方法，很大程度上减少了代码量，而且减少了代码维护的负担。故强烈建议项目中使用lombok，去掉bean中get、set、toString、equals和hashCode等方法的代码
+</code></pre><ul>
+<li>安装方法<ul>
+<li>打开IDEA -&gt; File -&gt; Settings… -&gt; Plugins -&gt; 点击”browse repositories” -&gt; 搜索lombok -&gt; Install，这样就可以安装了，安装完成后记得重启IDEA</li>
+</ul>
+</li>
+<li><p>使用方法</p>
+<ul>
+<li>添加maven依赖, 去这里搜索 <strong><a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a></strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.16.20&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在类名上加上注解，代码如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Setter</span><br><span class="line">@Getter</span><br><span class="line">@ToString</span><br><span class="line">@EqualsAndHashCode</span><br><span class="line">public class Student &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private String male;</span><br><span class="line">    private String studentNo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tcp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/04/03/idea好用的插件/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/09/常用linux命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常用linux命令
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/03/31/数据结构之“树”/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构之“树”</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="idea好用的插件"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyu3wTC8t",
+        conf: "fe52c06fc688a8eadc4f9bd9e891c7c6"
+    });
+</script>
+
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +354,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

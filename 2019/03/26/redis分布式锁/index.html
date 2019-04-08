@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>redis分布式锁 | 码到秃头！</title>
+  <title>redis分布式锁 | johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="分布式锁一般有三种实现方式：1. 数据库乐观锁；2. 基于Redis的分布式锁；3. 基于ZooKeeper的分布式锁 为什么用redis分布式锁，怎么用呢？  为什么？  使用redis锁，主要是为了解决分布式部署环境下多进程对资源的操作不会导致脏读脏写。redis锁相比数据库的性能要好，因为是在内存中操作   怎么用？  加锁的时候往redis里面写入一个key-value， 当其他线程进入这">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis分布式锁">
 <meta property="og:url" content="http://blog.readytran.com/2019/03/26/redis分布式锁/index.html">
-<meta property="og:site_name" content="码到秃头！">
+<meta property="og:site_name" content="johnkang&#39;s blog">
 <meta property="og:description" content="分布式锁一般有三种实现方式：1. 数据库乐观锁；2. 基于Redis的分布式锁；3. 基于ZooKeeper的分布式锁 为什么用redis分布式锁，怎么用呢？  为什么？  使用redis锁，主要是为了解决分布式部署环境下多进程对资源的操作不会导致脏读脏写。redis锁相比数据库的性能要好，因为是在内存中操作   怎么用？  加锁的时候往redis里面写入一个key-value， 当其他线程进入这">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-03-31T07:06:59.809Z">
@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="redis分布式锁">
 <meta name="twitter:description" content="分布式锁一般有三种实现方式：1. 数据库乐观锁；2. 基于Redis的分布式锁；3. 基于ZooKeeper的分布式锁 为什么用redis分布式锁，怎么用呢？  为什么？  使用redis锁，主要是为了解决分布式部署环境下多进程对资源的操作不会导致脏读脏写。redis锁相比数据库的性能要好，因为是在内存中操作   怎么用？  加锁的时候往redis里面写入一个key-value， 当其他线程进入这">
   
-    <link rel="alternative" href="/atom.xml" title="码到秃头！" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -276,7 +276,7 @@
     </a>
   
   
-    <a href="/2019/03/25/面试1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/03/25/面试/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">隐私日记</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -437,11 +437,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,7 +449,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,7 +461,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>

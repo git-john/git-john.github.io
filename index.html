@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>码到秃头！</title>
+  <title>johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="码到秃头！">
+<meta property="og:title" content="johnkang&#39;s blog">
 <meta property="og:url" content="http://blog.readytran.com/index.html">
-<meta property="og:site_name" content="码到秃头！">
+<meta property="og:site_name" content="johnkang&#39;s blog">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码到秃头！">
+<meta name="twitter:title" content="johnkang&#39;s blog">
   
-    <link rel="alternative" href="/atom.xml" title="码到秃头！" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -158,6 +158,186 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常用linux命令" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/09/常用linux命令/">常用linux命令</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/09/常用linux命令/" class="archive-article-date">
+  	<time datetime="2019-04-08T16:21:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在linux中将ssh用户踢下线"><a href="#在linux中将ssh用户踢下线" class="headerlink" title="在linux中将ssh用户踢下线"></a>在linux中将ssh用户踢下线</h1><ul>
+<li>查看当前登录用户： <code>w</code></li>
+<li>查看自己： <code>who am i</code></li>
+<li>将可疑用户T下线： <code>pkill -kill -t tty1</code></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/09/常用linux命令/">展开全文 >></a>
+        </p>
+      
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-idea好用的插件" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/03/idea好用的插件/">idea好用的插件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/03/idea好用的插件/" class="archive-article-date">
+  	<time datetime="2019-04-03T02:40:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis-Generator自动构建插件"><a href="#Mybatis-Generator自动构建插件" class="headerlink" title="Mybatis-Generator自动构建插件"></a>Mybatis-Generator自动构建插件</h1><ul>
+<li>安装方法<ul>
+<li>打开IDEA -&gt; File -&gt; Settings… -&gt; Plugins -&gt; 点击”browse repositories” -&gt; 搜索better-mybatis-generator -&gt; Install，这样就可以安装了，安装完成后记得重启IDEA</li>
+</ul>
+</li>
+<li>使用方法<ul>
+<li>配置插件：打开IDEA -&gt; File -&gt; Settings… -&gt; Tools -&gt; Mybatis generator plugin，就可以看到配置界面。只要配置好对应的model，dao，xml路径即可。其他一般都不需要动。</li>
+<li>添加数据库：在IDEA界面右侧选择Database -&gt; 选择+号 -&gt; Data Source -&gt; 选择添加的数据库。 这时候会弹出配置数据库名，用户，密码界面，配置即可。</li>
+<li>生成代码：点击database里面的表，选择mybatis generate</li>
+</ul>
+</li>
+</ul>
+<h1 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h1><pre><code>项目中经常使用bean，entity等类，绝大部分数据类类中都需要get、set、toString、equals和hashCode方法，虽然eclipse和idea开发环境下都有自动生成的快捷方式，但自动生成这些代码后，如果bean中的属性一旦有修改、删除或增加时，需要重新生成或删除get/set等方法，给代码维护增加负担。而使用了lombok则不一样，使用了lombok的注解(@Setter,@Getter,@ToString,@@RequiredArgsConstructor,@EqualsAndHashCode或@Data)之后，就不需要编写或生成get/set等方法，很大程度上减少了代码量，而且减少了代码维护的负担。故强烈建议项目中使用lombok，去掉bean中get、set、toString、equals和hashCode等方法的代码
+</code></pre><ul>
+<li>安装方法<ul>
+<li>打开IDEA -&gt; File -&gt; Settings… -&gt; Plugins -&gt; 点击”browse repositories” -&gt; 搜索lombok -&gt; Install，这样就可以安装了，安装完成后记得重启IDEA</li>
+</ul>
+</li>
+<li><p>使用方法</p>
+<ul>
+<li>添加maven依赖, 去这里搜索 <strong><a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a></strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.16.20&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在类名上加上注解，代码如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Setter</span><br><span class="line">@Getter</span><br><span class="line">@ToString</span><br><span class="line">@EqualsAndHashCode</span><br><span class="line">public class Student &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private String male;</span><br><span class="line">    private String studentNo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/03/idea好用的插件/">展开全文 >></a>
+        </p>
+      
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据结构之“树”" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -186,6 +366,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -558,19 +749,19 @@
 
 
   
-    <article id="post-面试1" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-面试" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/25/面试1/">隐私日记</a>
+      <a class="article-title" href="/2019/03/25/面试/">隐私日记</a>
     </h1>
   
 
         
-        <a href="/2019/03/25/面试1/" class="archive-article-date">
+        <a href="/2019/03/25/面试/" class="archive-article-date">
   	<time datetime="2019-03-25T06:48:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
 </a>
         
@@ -580,7 +771,7 @@
       
         不公开
         
-          <a class="article-more-a" href="/2019/03/25/面试1/#more">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/25/面试/#more">展开全文 >></a>
         
       
 
@@ -604,7 +795,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/25/面试1/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/25/面试/">展开全文 >></a>
         </p>
       
 
@@ -789,162 +980,6 @@
 
 
   
-    <article id="post-读书" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/21/读书/">读书</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/21/读书/" class="archive-article-date">
-  	<time datetime="2019-03-21T09:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h1><p>已读的书</p>
-<blockquote>
-<p>《曾国藩传》</p>
-</blockquote>
-<p>读后感： 以前学习历史的时候，对曾国藩可以说是相当鄙视的，被太平天国打的几次要跳水自杀。读完这本书发现，他比左宗棠还伟大。他本身并不聪明，记忆力很差（比我差远了），身体也不行。但是他一直在致力于做圣人的目标， 为了达成这样的目标，他想尽办法，每天都读书，写日志反省自己。 他提出尚拙的理念，其实就是要自己将基础夯实。很认可他的书要一本一本的读，读完一本再去读下一本的理念。 看完后给自己立下目标，不再想尽办法去搜集下载书，将计划要读的书读好了再去读下一本书，让自己不再浮躁。博客要坚持写下去， 让自己学会思考，而不是一直在接受别人的想法中。 学习曾国藩的为人信条： 不因谄媚而去夸奖，因为那会让你的夸奖显得廉价，让别人对你的夸奖不在乎，如果我每次都是发自内心的夸奖，那么我的夸奖就会让人觉得很开心。<br>
-        
-          <a class="article-more-a" href="/2019/03/21/读书/#more">展开全文 >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/21/读书/">展开全文 >></a>
-        </p>
-      
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于并发" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/21/关于并发/">关于并发</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/21/关于并发/" class="archive-article-date">
-  	<time datetime="2019-03-21T03:48:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。<br>我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/21/关于并发/">展开全文 >></a>
-        </p>
-      
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1066,11 +1101,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1082,7 +1113,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1090,7 +1125,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>
