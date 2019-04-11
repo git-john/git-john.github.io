@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="johnkang&#39;s blog">
 <meta property="og:description" content="在linux中将ssh用户踢下线 查看当前登录用户： w 查看自己： who am i 将可疑用户T下线： pkill -kill -t tty1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-08T16:25:14.846Z">
+<meta property="og:updated_time" content="2019-04-11T09:29:11.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用linux命令">
 <meta name="twitter:description" content="在linux中将ssh用户踢下线 查看当前登录用户： w 查看自己： who am i 将可疑用户T下线： pkill -kill -t tty1">
@@ -186,6 +186,26 @@
 <li>查看自己： <code>who am i</code></li>
 <li>将可疑用户T下线： <code>pkill -kill -t tty1</code></li>
 </ul>
+<a id="more"></a>
+<h1 id="挂载一个硬盘"><a href="#挂载一个硬盘" class="headerlink" title="挂载一个硬盘"></a>挂载一个硬盘</h1><ul>
+<li>查看数据盘： <code>fdisk -l</code></li>
+<li>分区数据盘 <code>fdisk -u /dev/vdb</code></li>
+<li>输入 p 查看分区情况</li>
+<li>输入n创建一个新分区</li>
+<li>输入p选择分区类型为主分区， 也可以创建为扩展分区，那就是输入e了</li>
+<li>输入分区编号， 我只分一个区，所以输入 1</li>
+<li>输入可用的扇区编号，我选择默认（2048）</li>
+<li>输入最后一个扇区编号，我选择默认</li>
+<li>输入p进行查看分区情况</li>
+<li>输入w，开始分区，并在分区后退出</li>
+<li>运行命令 <code>mkfs.ext4 /dev/vdb1</code>在新分区上创建一个文件系统</li>
+<li>运行命令 <code>cp /etc/fstab /etc/fstab.bak</code> 备份 etc/fstab</li>
+<li><code>echo /dev/vdb1 /mnt ext4 defaults 0 0 &gt;&gt; /etc/fstab</code> 向 /etc/fstab 写入新分区信息</li>
+<li>运行命令 <code>mount /dev/vdb1 /mnt</code> 挂载文件系统</li>
+<li>运行命令 <code>df -h</code> 查看目前磁盘空间和使用情况</li>
+</ul>
+<h1 id="添加用户与用户组"><a href="#添加用户与用户组" class="headerlink" title="添加用户与用户组"></a>添加用户与用户组</h1><h2 id="添加用户组"><a href="#添加用户组" class="headerlink" title="添加用户组"></a>添加用户组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd webguest</span><br></pre></td></tr></table></figure>
+<h2 id="添加用户并创建目录，指定分组"><a href="#添加用户并创建目录，指定分组" class="headerlink" title="添加用户并创建目录，指定分组"></a>添加用户并创建目录，指定分组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g webguest -d /home/webguest webguest</span><br></pre></td></tr></table></figure>
 
       
 
@@ -417,11 +437,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -430,18 +462,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>
