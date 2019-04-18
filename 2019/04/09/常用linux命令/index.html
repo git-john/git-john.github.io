@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="johnkang&#39;s blog">
 <meta property="og:description" content="在linux中将ssh用户踢下线 查看当前登录用户： w 查看自己： who am i 将可疑用户T下线： pkill -kill -t tty1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-11T09:29:11.994Z">
+<meta property="og:updated_time" content="2019-04-12T03:02:03.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用linux命令">
 <meta name="twitter:description" content="在linux中将ssh用户踢下线 查看当前登录用户： w 查看自己： who am i 将可疑用户T下线： pkill -kill -t tty1">
@@ -206,6 +206,7 @@
 </ul>
 <h1 id="添加用户与用户组"><a href="#添加用户与用户组" class="headerlink" title="添加用户与用户组"></a>添加用户与用户组</h1><h2 id="添加用户组"><a href="#添加用户组" class="headerlink" title="添加用户组"></a>添加用户组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd webguest</span><br></pre></td></tr></table></figure>
 <h2 id="添加用户并创建目录，指定分组"><a href="#添加用户并创建目录，指定分组" class="headerlink" title="添加用户并创建目录，指定分组"></a>添加用户并创建目录，指定分组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g webguest -d /home/webguest webguest</span><br></pre></td></tr></table></figure>
+<h2 id="添加用户到sudoer"><a href="#添加用户到sudoer" class="headerlink" title="添加用户到sudoer"></a>添加用户到sudoer</h2><p>输入visudo命令， 在文件末尾加入配置：webguest ALL=(ALL)       ALL</p>
 
       
 
@@ -274,6 +275,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/04/12/认识systemd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          认识systemd
+        
+      </div>
+    </a>
   
   
     <a href="/2019/04/03/idea好用的插件/" id="article-nav-older" class="article-nav-link-wrap">
@@ -417,11 +427,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -437,15 +447,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,15 +455,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>
@@ -546,6 +556,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://blueskykong.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>aoho</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.ruanyifeng.com/blog/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>阮一峰</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.ityouknow.com/arch.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>纯洁的微笑</a>
             </li>
           
         </ul>

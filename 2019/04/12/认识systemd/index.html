@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>关于并发 | johnkang&#39;s blog</title>
+  <title>认识systemd | johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。">
-<meta name="keywords" content="架构">
+  <meta name="description" content="Systemd 是 Linux 系统工具，用来启动守护进程，已成为大多数发行版的标准配置 由来历史上，Linux 的启动一直采用init进程，sudo /etc/init.d/apache2 start。 这种方法有两个缺点。 启动时间长。init进程是串行启动，只有前一个进程启动完，才会启动下一个进程。 启动脚本复杂。init进程只是执行启动脚本，不管其他事情。脚本需要自己处理各种情况，这往往使">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于并发">
-<meta property="og:url" content="http://blog.readytran.com/2019/03/21/关于并发/index.html">
+<meta property="og:title" content="认识systemd">
+<meta property="og:url" content="http://blog.readytran.com/2019/04/12/认识systemd/index.html">
 <meta property="og:site_name" content="johnkang&#39;s blog">
-<meta property="og:description" content="我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。">
+<meta property="og:description" content="Systemd 是 Linux 系统工具，用来启动守护进程，已成为大多数发行版的标准配置 由来历史上，Linux 的启动一直采用init进程，sudo /etc/init.d/apache2 start。 这种方法有两个缺点。 启动时间长。init进程是串行启动，只有前一个进程启动完，才会启动下一个进程。 启动脚本复杂。init进程只是执行启动脚本，不管其他事情。脚本需要自己处理各种情况，这往往使">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T03:51:48.660Z">
+<meta property="og:updated_time" content="2019-04-12T03:43:09.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于并发">
-<meta name="twitter:description" content="我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。">
+<meta name="twitter:title" content="认识systemd">
+<meta name="twitter:description" content="Systemd 是 Linux 系统工具，用来启动守护进程，已成为大多数发行版的标准配置 由来历史上，Linux 的启动一直采用init进程，sudo /etc/init.d/apache2 start。 这种方法有两个缺点。 启动时间长。init进程是串行启动，只有前一个进程启动完，才会启动下一个进程。 启动脚本复杂。init进程只是执行启动脚本，不管其他事情。脚本需要自己处理各种情况，这往往使">
   
     <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
   
@@ -161,27 +161,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于并发" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-认识systemd" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于并发
+      认识systemd
     </h1>
   
 
         
-        <a href="/2019/03/21/关于并发/" class="archive-article-date">
-  	<time datetime="2019-03-21T03:48:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
+        <a href="/2019/04/12/认识systemd/" class="archive-article-date">
+  	<time datetime="2019-04-12T03:24:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。<br>我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。</p>
+        <p>Systemd 是 Linux 系统工具，用来启动守护进程，已成为大多数发行版的标准配置</p>
+<h1 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h1><p>历史上，Linux 的启动一直采用init进程，<code>sudo /etc/init.d/apache2 start</code>。</p>
+<p>这种方法有两个缺点。</p>
+<pre><code>启动时间长。init进程是串行启动，只有前一个进程启动完，才会启动下一个进程。
+启动脚本复杂。init进程只是执行启动脚本，不管其他事情。脚本需要自己处理各种情况，这往往使得脚本变得很长。
+</code></pre><a id="more"></a>
+<h1 id="Systemd-概述"><a href="#Systemd-概述" class="headerlink" title="Systemd 概述"></a>Systemd 概述</h1><p>Systemd 就是为了解决这些问题而诞生的。它的设计目标是，为系统的启动和管理提供一套完整的解决方案。</p>
+<p>根据 Linux 惯例，字母d是守护进程（daemon）的缩写。 Systemd 这个名字的含义，就是它要守护整个系统</p>
+<p>Systemd 的优点是功能强大，使用方便，缺点是体系庞大，非常复杂</p>
+<h1 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h1><p>Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面</p>
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><p><code>systemctl</code> 是 <code>Systemd</code> 的主命令，用于管理系统.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 重启系统</span><br><span class="line">$ sudo systemctl reboot</span><br><span class="line"></span><br><span class="line"># 关闭系统，切断电源</span><br><span class="line">$ sudo systemctl poweroff</span><br><span class="line"></span><br><span class="line"># CPU停止工作</span><br><span class="line">$ sudo systemctl halt</span><br><span class="line"></span><br><span class="line"># 暂停系统</span><br><span class="line">$ sudo systemctl suspend</span><br><span class="line"></span><br><span class="line"># 让系统进入冬眠状态</span><br><span class="line">$ sudo systemctl hibernate</span><br><span class="line"></span><br><span class="line"># 让系统进入交互式休眠状态</span><br><span class="line">$ sudo systemctl hybrid-sleep</span><br><span class="line"></span><br><span class="line"># 启动进入救援状态（单用户状态）</span><br><span class="line">$ sudo systemctl rescue</span><br></pre></td></tr></table></figure>
+<h2 id="systemd-analyze"><a href="#systemd-analyze" class="headerlink" title="systemd-analyze"></a>systemd-analyze</h2><p>systemd-analyze命令用于查看启动耗时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 查看启动耗时</span><br><span class="line">$ systemd-analyze </span><br><span class="line"></span><br><span class="line"># 查看每个服务的启动耗时</span><br><span class="line">$ systemd-analyze blame</span><br><span class="line"></span><br><span class="line"># 显示瀑布状的启动过程流</span><br><span class="line">$ systemd-analyze critical-chain</span><br><span class="line"></span><br><span class="line"># 显示指定服务的启动流</span><br><span class="line">$ systemd-analyze critical-chain atd.service</span><br></pre></td></tr></table></figure>
+<h2 id="hostnamectl"><a href="#hostnamectl" class="headerlink" title="hostnamectl"></a>hostnamectl</h2><p>hostnamectl命令用于查看当前主机的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 显示当前主机的信息</span><br><span class="line">$ hostnamectl</span><br><span class="line"></span><br><span class="line"># 设置主机名。</span><br><span class="line">$ sudo hostnamectl set-hostname rhel7</span><br></pre></td></tr></table></figure>
+<h2 id="localectl"><a href="#localectl" class="headerlink" title="localectl"></a>localectl</h2><p>localectl命令用于查看本地化设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 查看本地化设置</span><br><span class="line">$ localectl</span><br><span class="line"></span><br><span class="line"># 设置本地化参数。</span><br><span class="line">$ sudo localectl set-locale LANG=en_GB.utf8</span><br><span class="line">$ sudo localectl set-keymap en_GB</span><br></pre></td></tr></table></figure>
+<h2 id="timedatectl"><a href="#timedatectl" class="headerlink" title="timedatectl"></a>timedatectl</h2><p>timedatectl命令用于查看当前时区设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 查看当前时区设置</span><br><span class="line">$ timedatectl</span><br><span class="line"></span><br><span class="line"># 显示所有可用的时区</span><br><span class="line">$ timedatectl list-timezones</span><br><span class="line"></span><br><span class="line"># 设置当前时区</span><br><span class="line">$ sudo timedatectl set-timezone America/New_York</span><br><span class="line">$ sudo timedatectl set-time YYYY-MM-DD</span><br><span class="line">$ sudo timedatectl set-time HH:MM:SS</span><br></pre></td></tr></table></figure>
+<h2 id="loginctl"><a href="#loginctl" class="headerlink" title="loginctl"></a>loginctl</h2><p>loginctl命令用于查看当前登录的用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 列出当前session</span><br><span class="line">$ loginctl list-sessions</span><br><span class="line"></span><br><span class="line"># 列出当前登录用户</span><br><span class="line">$ loginctl list-users</span><br><span class="line"></span><br><span class="line"># 列出显示指定用户的信息</span><br><span class="line">$ loginctl show-user ruanyf</span><br></pre></td></tr></table></figure>
+<h1 id="Unit"><a href="#Unit" class="headerlink" title="Unit"></a>Unit</h1><p>Systemd 可以管理所有系统资源。不同的资源统称为 Unit（单位）。</p>
+<pre><code>1. Service unit：系统服务
+2. Target unit：多个 Unit 构成的一个组
+3. Device Unit：硬件设备
+4. Mount Unit：文件系统的挂载点
+5. Automount Unit：自动挂载点
+6. Path Unit：文件或路径
+7. Scope Unit：不是由 Systemd 启动的外部进程
+8. Slice Unit：进程组
+9. Snapshot Unit：Systemd 快照，可以切回某个快照
+10. Socket Unit：进程间通信的 socket
+11. Swap Unit：swap 文件
+12. Timer Unit：定时器
+</code></pre><h1 id="Unit-的配置文件"><a href="#Unit-的配置文件" class="headerlink" title="Unit 的配置文件"></a>Unit 的配置文件</h1><p>每一个 Unit 都有一个配置文件，告诉 Systemd 怎么启动这个 Unit 。</p>
+<p>Systemd 默认从目录/etc/systemd/system/读取配置文件。但是，里面存放的大部分文件都是符号链接，指向目录/usr/lib/systemd/system/，真正的配置文件存放在那个目录。</p>
+<p>systemctl enable命令用于在上面两个目录之间，建立符号链接关系</p>
+<p><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html</a></p>
 
       
 
@@ -195,7 +233,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -236,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/03/21/关于并发/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/04/12/认识systemd/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -251,18 +289,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/21/读书/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/12/资源收集/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          读书
+          资源收集
         
       </div>
     </a>
   
   
-    <a href="/2019/03/15/awk与sed读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">awk与sed读书笔记</div>
+    <a href="/2019/04/09/常用linux命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常用linux命令</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -292,7 +330,7 @@
   
 
   
-  <div id="SOHUCS" sid="关于并发"></div> 
+  <div id="SOHUCS" sid="认识systemd"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({

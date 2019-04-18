@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.readytran.com">
-  <title>关于并发 | johnkang&#39;s blog</title>
+  <title>踩坑问题收集 | johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。">
-<meta name="keywords" content="架构">
+  <meta name="description" content="CentOS安装、配置APR和tomcat-native Tomcat可以使用APR来提供超强的可伸缩性和性能，更好地集成本地服务器技术。APR(Apache Portable Runtime)是一个高可移植库，它是Apache HTTP Server 2.x的核心。APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)，OS级别功能(随机数生成，系统状态等等)">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于并发">
-<meta property="og:url" content="http://blog.readytran.com/2019/03/21/关于并发/index.html">
+<meta property="og:title" content="踩坑问题收集">
+<meta property="og:url" content="http://blog.readytran.com/2019/04/12/踩坑问题收集/index.html">
 <meta property="og:site_name" content="johnkang&#39;s blog">
-<meta property="og:description" content="我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。">
+<meta property="og:description" content="CentOS安装、配置APR和tomcat-native Tomcat可以使用APR来提供超强的可伸缩性和性能，更好地集成本地服务器技术。APR(Apache Portable Runtime)是一个高可移植库，它是Apache HTTP Server 2.x的核心。APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)，OS级别功能(随机数生成，系统状态等等)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T03:51:48.660Z">
+<meta property="og:updated_time" content="2019-04-12T08:57:59.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于并发">
-<meta name="twitter:description" content="我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。">
+<meta name="twitter:title" content="踩坑问题收集">
+<meta name="twitter:description" content="CentOS安装、配置APR和tomcat-native Tomcat可以使用APR来提供超强的可伸缩性和性能，更好地集成本地服务器技术。APR(Apache Portable Runtime)是一个高可移植库，它是Apache HTTP Server 2.x的核心。APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)，OS级别功能(随机数生成，系统状态等等)">
   
     <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
   
@@ -161,28 +161,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于并发" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-踩坑问题收集" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于并发
+      踩坑问题收集
     </h1>
   
 
         
-        <a href="/2019/03/21/关于并发/" class="archive-article-date">
-  	<time datetime="2019-03-21T03:48:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
+        <a href="/2019/04/12/踩坑问题收集/" class="archive-article-date">
+  	<time datetime="2019-04-12T08:52:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我的并发有多少， 每个请求20ms左右。 那么我的平均响应时间=0.02， qps=50，两台服务器，就是一秒有100qps。<br>我能支撑的并发是多少呢，一个小时的并发支撑能力为 100*3600=36w.那么我的系统就是百万级别的并发。</p>
+        <p>CentOS安装、配置APR和tomcat-native</p>
+<pre><code>Tomcat可以使用APR来提供超强的可伸缩性和性能，更好地集成本地服务器技术。APR(Apache Portable Runtime)是一个高可移植库，它是Apache HTTP Server 2.x的核心。APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)，OS级别功能(随机数生成，系统状态等等)，本地进程管理(共享内存，NT管道和UNIX sockets)。
 
+所以我们需要配置tomcat native来加强tomcat性能，具体安装配置方法  `https://blog.csdn.net/ClementAD/article/details/47320037`
+</code></pre>
       
 
       
@@ -195,7 +198,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -236,7 +239,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/03/21/关于并发/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.readytran.com/2019/04/12/踩坑问题收集/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -251,18 +254,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/21/读书/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/18/设计模式六大原则/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          读书
+          设计模式六大原则
         
       </div>
     </a>
   
   
-    <a href="/2019/03/15/awk与sed读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">awk与sed读书笔记</div>
+    <a href="/2019/04/12/资源收集/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">资源收集</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -292,7 +295,7 @@
   
 
   
-  <div id="SOHUCS" sid="关于并发"></div> 
+  <div id="SOHUCS" sid="踩坑问题收集"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
