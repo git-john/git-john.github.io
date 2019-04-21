@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.readytran.com/2019/04/21/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-04-21T08:43:42.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.readytran.com/2019/04/12/%E8%B5%84%E6%BA%90%E6%94%B6%E9%9B%86/</loc>
+    
+    <lastmod>2019-04-19T02:11:53.518Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.readytran.com/2019/03/22/resume/</loc>
+    
+    <lastmod>2019-04-18T06:55:30.261Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.readytran.com/2019/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/</loc>
     
     <lastmod>2019-04-18T06:34:05.754Z</lastmod>
@@ -12,13 +33,6 @@
     <loc>http://blog.readytran.com/2019/04/12/%E8%B8%A9%E5%9D%91%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86/</loc>
     
     <lastmod>2019-04-12T08:57:59.580Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.readytran.com/2019/04/12/%E8%B5%84%E6%BA%90%E6%94%B6%E9%9B%86/</loc>
-    
-    <lastmod>2019-04-12T07:40:24.597Z</lastmod>
     
   </url>
   
@@ -89,13 +103,6 @@
     <loc>http://blog.readytran.com/2019/03/26/redis%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-04-01T02:36:04.754Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.readytran.com/2019/03/22/resume/</loc>
-    
-    <lastmod>2019-03-31T08:08:33.020Z</lastmod>
     
   </url>
   
