@@ -179,48 +179,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="mysql索引"><a href="#mysql索引" class="headerlink" title="mysql索引"></a>mysql索引</h1><p>为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： <strong>顺序数组，哈希， 搜索树。</strong></p>
-<pre><code>数组结构：要求插入的时候保证有序， 这样可以使用二分查找达到O(logN)的时间复杂度。 但是数组有一个缺点，插入数据时需要移动数据以便保证有序，时间复杂度为 O(N)。所以有序数组只适合静态数据，不适合经常变动的数据。为什么不使用链表来存储？这是因为操作系统以4kb作为一个数据页进行数据读取，mysql以16kb作为一个数据块来读取。已经读取过的数据块会在内存中缓存。 如果多次读取的数据在同一个数据库，那么就只需要一次磁盘IO。而如果顺序一致的记录在文件中也是顺序存储的，就可以一次读取多个数据块(不理解这个)，这样查询范围的速度就可以大大提升。
-
-哈希结构：类似于jdk的hashmap，哈希表通过一个特定的哈希函数将key值转换为一个固定的地址，然后将对应的value放到这个位置。如果发生哈希碰撞，就在当前位置拉出一个链表。由于哈希函数的离散特性，经过哈希函数处理后的key将失去原有顺序，所以它无法满足范围查询，只适合等值查询的情况，如一些缓存的场景。
-
-树结构：二叉树如果只有左子节点或只有右子节点， 则变成了一个线性结构，所以为了维持Olog（N）的查询时间复杂度， 平衡二叉树的插入时间复杂度也是 O（log（N））。二叉树如果只有两个子节点，在数据量很大的情况下，树高就会很高，树的每一层一般不在一个数据块进行存储。为了尽量的减少磁盘读写， 我们采用N叉树来代替二叉树，mysql的N为1200，这样在树高为4的情况下也能存储上亿级别的数据，而且前面两层一般都存储在内存中。mysql中用到的B+树一般用非叶子节点构建索引，用叶子节点来存储具体的数据。
-</code></pre><p>InnoDB中，有聚簇索引与普通索引之分。</p>
-<pre><code>聚簇索引根据主键来构建，叶子节点存放的是行数据。 
-普通索引是根据声明索引时候的列来构建，叶子节点存放的是数据行的主键。
-普通索引还有唯一索引和联合索引两个特例。唯一索引会在插入和修改的时候对列值进行判断是否存在，联合索引则会按建立索引的先后顺序进行列值拼接，然后构建索引。
-</code></pre><p>所以我们知道了按普通索引查询会先查出主键索引，然后查出对应的行数据。 这个过程我们称为回表。如果我们对要查询的字段都加入到了一个联合索引，这种查询不需要进行回表，直接从索引中就可以读取到值，这种我们称为覆盖索引。</p>
-<p>索引的一些注意点。</p>
-<pre><code>如果在索引上用到了函数，将导致无法用到之前创建的索引。
-索引遵循最左匹配原则
-查询以某个字符串开头，能用到索引，查询是否包含某个字符串将用不到索引，此时可以使用全文索引。
-联合索引根据第一个列查询可以用到索引，仅仅根据第二个列将无法用到索引
-查询的时候用 IN 的效率高于 NOT =
-建议将索引的列设置为非空，这个和 NULL 字段的存储有关
-</code></pre><h2 id="问题：-为什么我们不建议使用订单号来作为订单表的主键？"><a href="#问题：-为什么我们不建议使用订单号来作为订单表的主键？" class="headerlink" title="问题： 为什么我们不建议使用订单号来作为订单表的主键？"></a>问题： 为什么我们不建议使用订单号来作为订单表的主键？</h2><ol>
-<li>因为普通索引的叶子节点存储的是主键的值，而订单号一般都很长，这样会导致普通索引会占用很大的物理空间。</li>
-<li>一般我们使用自增id来作为主键，连续性较好， 这样相邻的两条记录会很大概率在同一个数据块上。可以减少磁盘的读取次数。</li>
-</ol>
-<h1 id="存储格式"><a href="#存储格式" class="headerlink" title="存储格式"></a>存储格式</h1><p>InnoDB逻辑存储结构从大到小可分为：表空间，段，区，页，行。如图</p>
-<p><img src="../asset/img/mysql_storage.jpg" alt="存储格式"></p>
-<pre><code>表空间作为存储结构的最高层，所有数据都存放在表空间中，默认情况下用一个共享表空间 ibdata1 ，如果开启了 innodb_file_per_table 则每张表的数据将存储在单独的表空间中，也就是每张表都会有一个文件
-
-表空间由各个段构成，InnoDB存储引擎由索引组织的，而索引中的叶子节点用来记录数据，存储在数据段，而非叶子节点用来构建索引，存储在索引段，而回滚段我们在后面分析锁的时候在聊
-
-区是由连续的页组成，任何情况下一个区都是 1MB。一个区中可以有多个页，每个页默认16kb，所以默认情况下，一个区有64个连续的页。页的大小可以根据innodb_page_size设置。
-
-数据页存储的是具体的数据行记录。一行记录最终以二进制的形式存储到文件中。所以我们要能够解析出一行数据的各个列的值就需要按规定格式来存储数据行数据。
-</code></pre><p><img src="../asset/img/row_storage.png" alt="行数据存储格式"></p>
-<ul>
-<li><p>变长字段长度列表，该位置用来存储所申明的变长字段中非空字段实际占有的长度列表，例如有3个非空字段，其中第一个字段长度为3，第二个字段为空，<em>第三个字段长度为1，则将用 01 03 表示</em>（<font color="red">倒序存放</font>），为空字段将在下一个位置进行标记。变长字段长度不能超过 2 个字节，所以 varchar 的长度最大为 65535</p>
-</li>
-<li><p>NULL 标志位，占 1 个字节，如果对应的列为空则在对应的位上置为 1 ，否则为 0 ，由于该标志位占一个字节，所以列的数量不能超过 255。如果某字段为空，在后面具体的列数据中将不会在记录。这种方式也导致了在处理索引字段为空的时候需要进行额外的操作</p>
-</li>
-<li><p>记录头信息，固定占 5 字节，包含下一条记录的位置，该行记录总长度，记录类型，是否被删除，对应的 slot 信息等</p>
-</li>
-<li><p>列数据 包含具体的列对应的值，加上两个隐藏列，事务 ID 列和回滚指针列。如果没有申明主键，还会增加一列记录内部 ID（<font color="red">这就是隐式主键了</font>）</p>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2019/04/21/mysql学习笔记/#more">展开全文 >></a>
+        
       
 
       
@@ -1130,10 +1091,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ios</a>
               </li>
              
@@ -1146,7 +1103,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1158,7 +1115,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,11 +1127,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>

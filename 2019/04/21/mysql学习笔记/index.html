@@ -8,20 +8,22 @@
   <link rel="dns-prefetch" href="http://blog.readytran.com">
   <title>mysql学习笔记 | johnkang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mysql索引为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： 顺序数组，哈希， 搜索树。 数组结构：要求插入的时候保证有序， 这样可以使用二分查找达到O(logN)的时间复杂度。 但是数组有一个缺点，插入数据时需要移动数据以便保证有序，时间复杂度为 O(N)。所以有序数组只适">
+  <meta name="description" content="mysql索引为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： 顺序数组，哈希， 搜索树。">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql学习笔记">
 <meta property="og:url" content="http://blog.readytran.com/2019/04/21/mysql学习笔记/index.html">
 <meta property="og:site_name" content="johnkang&#39;s blog">
-<meta property="og:description" content="mysql索引为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： 顺序数组，哈希， 搜索树。 数组结构：要求插入的时候保证有序， 这样可以使用二分查找达到O(logN)的时间复杂度。 但是数组有一个缺点，插入数据时需要移动数据以便保证有序，时间复杂度为 O(N)。所以有序数组只适">
+<meta property="og:description" content="mysql索引为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： 顺序数组，哈希， 搜索树。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://blog.readytran.com/2019/04/21/asset/img/mysql_storage.jpg">
 <meta property="og:image" content="http://blog.readytran.com/2019/04/21/asset/img/row_storage.png">
-<meta property="og:updated_time" content="2019-04-21T08:43:42.878Z">
+<meta property="og:image" content="http://blog.readytran.com/2019/04/21/asset/img/page_storage.jpg">
+<meta property="og:image" content="http://blog.readytran.com/2019/04/21/asset/img/innodb_model.jpg">
+<meta property="og:updated_time" content="2019-04-21T09:57:21.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql学习笔记">
-<meta name="twitter:description" content="mysql索引为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： 顺序数组，哈希， 搜索树。 数组结构：要求插入的时候保证有序， 这样可以使用二分查找达到O(logN)的时间复杂度。 但是数组有一个缺点，插入数据时需要移动数据以便保证有序，时间复杂度为 O(N)。所以有序数组只适">
+<meta name="twitter:description" content="mysql索引为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： 顺序数组，哈希， 搜索树。">
 <meta name="twitter:image" content="http://blog.readytran.com/2019/04/21/asset/img/mysql_storage.jpg">
   
     <link rel="alternative" href="/atom.xml" title="johnkang&#39;s blog" type="application/atom+xml">
@@ -185,6 +187,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="mysql索引"><a href="#mysql索引" class="headerlink" title="mysql索引"></a>mysql索引</h1><p>为了快速定位到mysql存储的某张表，某行记录，以便进行查询与修改， 我们需要将数据以一定的数据结构进行存储，这个数据结构就是我们说的索引。能够支持快速查找的数据结构有： <strong>顺序数组，哈希， 搜索树。</strong></p>
+<a id="more"></a>
 <pre><code>数组结构：要求插入的时候保证有序， 这样可以使用二分查找达到O(logN)的时间复杂度。 但是数组有一个缺点，插入数据时需要移动数据以便保证有序，时间复杂度为 O(N)。所以有序数组只适合静态数据，不适合经常变动的数据。为什么不使用链表来存储？这是因为操作系统以4kb作为一个数据页进行数据读取，mysql以16kb作为一个数据块来读取。已经读取过的数据块会在内存中缓存。 如果多次读取的数据在同一个数据库，那么就只需要一次磁盘IO。而如果顺序一致的记录在文件中也是顺序存储的，就可以一次读取多个数据块(不理解这个)，这样查询范围的速度就可以大大提升。
 
 哈希结构：类似于jdk的hashmap，哈希表通过一个特定的哈希函数将key值转换为一个固定的地址，然后将对应的value放到这个位置。如果发生哈希碰撞，就在当前位置拉出一个链表。由于哈希函数的离散特性，经过哈希函数处理后的key将失去原有顺序，所以它无法满足范围查询，只适合等值查询的情况，如一些缓存的场景。
@@ -215,7 +218,7 @@
 区是由连续的页组成，任何情况下一个区都是 1MB。一个区中可以有多个页，每个页默认16kb，所以默认情况下，一个区有64个连续的页。页的大小可以根据innodb_page_size设置。
 
 数据页存储的是具体的数据行记录。一行记录最终以二进制的形式存储到文件中。所以我们要能够解析出一行数据的各个列的值就需要按规定格式来存储数据行数据。
-</code></pre><p><img src="../asset/img/row_storage.png" alt="行数据存储格式"></p>
+</code></pre><h2 id="数据行存储格式"><a href="#数据行存储格式" class="headerlink" title="数据行存储格式"></a>数据行存储格式</h2><p><img src="../asset/img/row_storage.png" alt="行数据存储格式"></p>
 <ul>
 <li><p>变长字段长度列表，该位置用来存储所申明的变长字段中非空字段实际占有的长度列表，例如有3个非空字段，其中第一个字段长度为3，第二个字段为空，<em>第三个字段长度为1，则将用 01 03 表示</em>（<font color="red">倒序存放</font>），为空字段将在下一个位置进行标记。变长字段长度不能超过 2 个字节，所以 varchar 的长度最大为 65535</p>
 </li>
@@ -224,6 +227,94 @@
 <li><p>记录头信息，固定占 5 字节，包含下一条记录的位置，该行记录总长度，记录类型，是否被删除，对应的 slot 信息等</p>
 </li>
 <li><p>列数据 包含具体的列对应的值，加上两个隐藏列，事务 ID 列和回滚指针列。如果没有申明主键，还会增加一列记录内部 ID（<font color="red">这就是隐式主键了</font>）</p>
+</li>
+</ul>
+<h2 id="数据页存储格式"><a href="#数据页存储格式" class="headerlink" title="数据页存储格式"></a>数据页存储格式</h2><p>InnoDB的数据页由7个部分组成：</p>
+<ul>
+<li>文件头（File Header）固定38个字节（页的位置，上一页下一页位置，checksum , LSN）</li>
+<li>数据页头（page header）固定56个字节。包含slot数目，可重用空间起始地址，第一个记录地址，记录数，最大事务ID等</li>
+<li>虚拟的最大最小记录 （Infimum + Supremum Record）</li>
+<li>用户记录 （User Records） 包含已经删除的记录以链表的形式构成可重用空间</li>
+<li>待分配空间 （Free spaces） 未分配的空间</li>
+<li>页目录 （Page Directory） slot 信息，下面单独介绍</li>
+<li>文件尾 （File Trailer） 固定8个字节,用来保证页的完整性</li>
+</ul>
+<p><img src="../asset/img/page_storage.jpg" alt="数据页存储格式"></p>
+<p>页目录里维护多个 slot ，一个 slot 包含多个行记录。每个 slot 占 2 个字节，记录这个 slot 里的行记录相对页初始位置的偏移量。由于索引只能定位到数据页，而定位到数据页内的行记录还需要在内存中进行二分查找，而这个二分查找就需要借助 slot 信息，先找到对应的 slot ，然后在 slot 内部通过数据行中记录头里的下一个记录地址进行遍历。每一个 slot 可以包含 4 到 8 个数据行。如果没有 slot 辅助，链表本身是无法进行二分查找的。</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>排序有好多种算法来实现，在 MySQL 中经常会带上一个 limit ,表示从排序后的结果集中取前 100 条，或者取第 n 条到第 m 条，要实现排序，我们需要先根据查询条件获取结果集，然后在内存中对这个结果集进行排序，如果结果集数量特别大，还需要将结果集写入到多个文件里，然后单独对每个文件里的数据进行排序，然后在文件之间进行归并，排序完成后在进行 limit 操作。没错，这个就是 MySQL 实现排序的方式，前提是排序的字段没有索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `person` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `city` varchar(16) NOT NULL,</span><br><span class="line">  `name` varchar(16) NOT NULL,</span><br><span class="line">  `age` int(11) NOT NULL,</span><br><span class="line">  `addr` varchar(128) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `city` (`city`)</span><br><span class="line">) ENGINE=InnoDB;</span><br><span class="line"></span><br><span class="line">select city,name,age from person where city=&apos;武汉&apos; order by name limit 100  ;</span><br></pre></td></tr></table></figure>
+<p>使用 explain 发现该语句会使用 city 索引，并且会有 filesort . 我们分析下该语句的执行流程</p>
+<ol>
+<li><p>初始化 sortbuffer ，用来存放结果集</p>
+</li>
+<li><p>找到 city  索引，定位到 city 等于武汉的第一条记录，获取主键索引ID</p>
+</li>
+<li><p>根据 ID 去主键索引上找到对应记录，取出 city,name,age 字段放入 sortbuffer</p>
+</li>
+<li><p>在 city 索引取下一个 city 等于武汉的记录的主键ID</p>
+</li>
+<li><p>重复上面的步骤，直到所有 city 等于武汉的记录都放入 sortbuffer</p>
+</li>
+<li><p>对 sortbuffer 里的数据根据 name 做快速排序</p>
+</li>
+<li><p>根据排序结果取前面 1000 条返回</p>
+</li>
+</ol>
+<p>这里是查询 city,name,age 3个字段，比较少，如果查询的字段较多，则多个列如果都放入 sortbuffer 将占有大量内存空间，另一个方案是只区出待排序的字段和主键放入 sortbuffer 这里是 name 和 id ,排序完成后在根据 id 取出需要查询的字段返回，其实就是时间换取空间的做法，这里通过 max_length_for_sort_data 参数控制，是否采用后面的方案进行排序。</p>
+<p>另外如果 sortbuffer 里的条数很多，同样会占有大量的内存空间，可以通过参数 sort_buffer_size 来控制是否需要借助文件进行排序，这里会把 sortbuffer 里的数据放入多个文件里，用归并排序的思路最终输出一个大的文件</p>
+<p>以上方案主要是 name 字段没有加上索引，如果 name 字段上有索引，由于索引在构建的时候已经是有序的了，所以就不需要进行额外的排序流程只需要在查询的时候查出指定的条数就可以了，这将大大提升查询速度。我们现在加一个 city 和 name 的联合索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table person add index city_user(city, name);</span><br></pre></td></tr></table></figure>
+<p>这样查询过程如下：</p>
+<ol>
+<li>根据 city,name 联合索引定位到 city 等于武汉的第一条记录，获取主键索引ID</li>
+<li>根据 ID 去主键索引上找到对应记录，取出 city,name,age 字段作为结果集返回</li>
+<li>继续重复以上步骤直到 city 不等于武汉，或者条数大于 1000</li>
+</ol>
+<p>总结一下，我们在有排序操作的时候，最好能够让排序字段上建有索引，另外由于查询第一百万条开始的一百条记录，需要过滤掉前面一百万条记录，即使用到索引也很慢，所以可以根据 ID 来进行区分，分页遍历的时候每次缓存上一次查询结果最后一条记录的 id ， 下一次查询加上 id &gt; xxxx limit 0,1000 这样可以避免前期扫描到的结果被过滤掉的情况</p>
+<h1 id="InnoDB存储模型"><a href="#InnoDB存储模型" class="headerlink" title="InnoDB存储模型"></a>InnoDB存储模型</h1><p>InnoDB 通过一系列后台线程将相关操作进行异步处理，如下图所示，同时借助缓冲池来减小 CPU 和磁盘速度上的差异。当查询的时候会先通过索引定位到对应的数据页，然后检测数据页是否在缓冲池内，如果在就直接返回，如果不在就去聚簇索引中通过磁盘 IO 读取对应的数据页并放入缓冲池。一个数据页会包含多个数据行。缓存池通过 LRU 算法对数据页进行管理，也就是最频繁使用的数据页排在列表前面，不经常使用的排在队尾，当缓冲池满了的时候会淘汰掉队尾的数据页。从磁盘新读取到的数据页并不会放在队列头部而是放在中间位置，这个中间位置可以通过参数进行修改。缓冲池也可以设置多个实例，数据页根据哈希算法决定放在哪个缓冲池。<br><img src="../asset/img/innodb_model.jpg" alt="innodb model"></p>
+<p>InnoDB 在更新数据的时候会采用 WAL 技术，也就是 Write Ahead Logging ，这个日志就是 redolog 用来保证数据库宕机后可以通过该文件进行恢复。这个文件一般只会顺序写，只有在数据库启动的时候才会读取 redolog 文件看是否需要进行恢复。该文件记录了对某个数据页的物理操作，例如某个 sql 把某一行的某个列的值改为 10 ，对应的 redolog 文件格式可能为：把第5个数据页中偏移量为99的位置写入一个值 10 。redolog 不是无限大的，他的大小是可以配置的，并且是循环使用的，例如配置大小为 4G ，一共 4 个文件，每个文件 1G 。首先从第一个文件开始顺序写，写到第四个文件后在从第一个文件开始写，类似一个环，用一个后台线程把 redolog 里的数据同步到聚簇索引上的数据页上。写入 redolog 的时候不能将没有同步到数据页上的记录覆盖，如果碰到这种情况会停下来先进行数据页同步然后在继续写入 redolog 。另外执行更新操作的时候，会先更新缓冲池里的数据页，然后写入 redolog ， 这个时候真正存储数据的地方还没有更新，也就是说这时候缓冲池中的数据页和磁盘不一致，这种数据页称为脏页，当脏页由于内存不足或者其他原因需要丢弃的时候，一定要先将该脏页对应的redolog 刷新到磁盘里的真实数据页，不然下次查询的时候由于 redolog 没有同步到磁盘，而查询直接通过索引定位到数据页就会查询出脏数据。</p>
+<p>更新的时候先从磁盘或者缓冲池中读取对应的数据页，然后对数据页里的数据进行更改并生成 redolog　到对应的缓冲池（redolog buffer）进行缓存，当事务提交的时候将缓存写入到　redolog　的物理磁盘文件上。这里由于操作系统的文件写入 InnoDB 并没有使用 O_DIRECT 直接写入到文件，为了保证性能而是先写入操作系统的缓存，之后在进行 flush ，所以事务提交的时候 InnoDB 需要在调用一次　fsync 的系统调用来确保数据落盘。为了提高性能 InnoDB 可以通过参数 innodb_flush_log_at_trx_commit 来控制事务提交时是否强制刷盘。默认为 1 ，事务每次提交都需要调用 fsync 进行刷盘，0 表示事务提交的时候不会调用 　redolog　的文件写入，通过后台线程每秒同步一次，2 表示事务提交的时候会写入文件但是只保证写入操作系统缓存，不进行 fsync 操作。redolog 文件只会顺序写，所以磁盘操作性能不会太慢，所以建议生产环境都设置为　１　，以防止数据库宕机导致数据丢失。</p>
+<p>在执行更新逻辑的时候还会写入另外一个日志：undolog 。这个文件存储在共享表空间中，也就是即使打开了 innodb_file_per_table 参数，所有的表的 undolog 都存储在同一个文件里。该文件主要用来做事务回滚和 MVCC 。undolog 是逻辑日志，也就是他不是记录的将物理的数据页恢复到之前的状态，而是记录的和原 sql 相反的 sql , 例如 insert 对应 delete , delete 对应 insert ，update 对应另外一个 update　。事务回滚很好理解，执行相反的操作回滚到之前的状态，而 MVCC 是指镜像读，当一个事务需要查询某条记录，而该记录已经被其他事务修改，但该事务还没提交，而当前事务可以通过 undolog 计算到之前的值。这里我们只需要知道和 redolog 一样， undolog 也是需要在执行 update 语句的时候在事务提交前需要写入到文件的。另外 undolog 的写入也会有对应的 redolog ，因为 undolog 也需要持久化，通过 WAL 可以提高效率。这里可以总结下，在事务提交的时候要保证 redolog 写入到文件里，而这个 redolog 包含 主键索引上的数据页的修改，以及共享表空间的回滚段中 undolog 的插入。另外 undolog 的清理通过一个后台线程定时处理，清理的时候需要判断该 undolog 是否所有的事务都不会用到</p>
+<p>熟悉 MySQL 的都知道，他通过 binlog 来进行高可用，也就是通过 binlog 来将数据同步到集群内其他的 MySQL 实例。binlog 和 redolog 的区别是，他是在存储引擎上层 Server 层写入的，他记录的是逻辑操作，也就是对应的 sql ,而 redolog 记录的底层某个数据页的物理操作，redolog 是循环写的，而binlog 是追加写的，不会覆盖以前写的数据。而binlog 也需要在事务提交前写入文件。binlog 的写入页需要通过 fsync 来保证落盘，为了提高 tps ，MySQL　可以通过参数　　sync_binlog 来控制是否需要同步刷盘，该策略会影响当主库宕机后备库数据可能并没有完全同步到主库数据。由于事务的原子性，需要保证事务提交的时候 redolog 和 binlog 都写入成功，所以 MySQL 执行层采用了两阶段提交来保证 redolog 和 binlog 都写入成功后才 commit，如果一方失败则会进行回滚。</p>
+<p>下面我们理一下一条　update 语句的执行过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update person set age = 30 where id = 1;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>分配事务 ID ，开启事务，获取锁，没有获取到锁则等待。</li>
+<li>执行器先通过存储引擎找到 id = 1 的数据页，如果缓冲池有则直接取出，没有则去主键索引上取出对应的数据页放入缓冲池。</li>
+<li>在数据页内找到 id = 1 这行记录，取出，将 age 改为 30 然后写入内存</li>
+<li>生成 redolog undolog 到内存，redolog 状态为 prepare</li>
+<li>将 redolog undolog 写入文件并调用 fsync</li>
+<li>server 层生成 binlog 并写入文件调用 fsync</li>
+<li>事务提交，将 redolog 的状态改为 commited 释放锁</li>
+</ol>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><p>数据库使用锁是为了对共享资源进行并发访问控制，从而保证数据的完整性和一致性。InnoDB 中锁的最小粒度为行，和 jdk 中的 ReadWriteLock 一样，InnoDB提供了共享锁和排他锁，分别用来读和写。共享锁之间可以兼容，其他都互斥。根据加锁的范围，可以分为：全局锁、表级锁、行锁。全局锁会把整个数据库实例加锁，命令为 flush tables withs read lock ，<br>将使数据库处于只读状态，其他数据写入和修改表结构等语句会阻塞，一般在备库上做全局备份使用。而表级锁有两种，一种是表锁，命令为 lock table with read/write ，和读写锁一样，另外一种是元数据锁，也叫意向锁，不需要显示申明，当执行修改表结构，加索引的时候会自动加元数据写锁，对表进行增删改查的时候会加元数据读锁。这样当两条修改语句的事务之间元数据锁都是读锁不互斥，但是修改表结构的时候执行更新由于互斥就需要阻塞。还有一种行级锁称为间隙锁，他锁定的是两条记录之间的间隙，防止其他事务往这个间隙插入数据，间隙锁是隐式锁，是存储引擎自己加上的</p>
+<h2 id="非锁定读"><a href="#非锁定读" class="headerlink" title="非锁定读"></a>非锁定读</h2><p>普通的 select 操作都是非锁定读，如果存在事务冲突，会利用 undolog 获取新事务操作之前的镜像返回，在读已提交的隔离级别下，会获取新事务修改前的最新的一份已经提交的数据，而在可重复读的隔离级别下，会读取该事务开始时的数据版本。当有多个事务并发操作同一行记录时，该记录会同时存在多个 undolog ，每个 undolog 就是一个版本，这种模式称为多版本并发控制（MVCC） ，该模式能够极大的提高数据库的性能，想一想，如果基于锁来控制的话，当对某个记录进行修改的时候，另一个事务将需要等待，不管他是要读取还是写入，MVCC 允许写入的时候还能够进行读操作，这对大部分都是查询操作的应用来说极大的提高了 tps</p>
+<h2 id="锁定读"><a href="#锁定读" class="headerlink" title="锁定读"></a>锁定读</h2><p>有时候我们在查询的时候需要显示的给记录加锁来保证一致性，select  for update 将对扫描到的记录加上排他锁，而 select in share lock 将对扫描的记录加上共享锁。这两个语句必须在一个事物内，也就是需要显示开启事物，begin transaction; 当事物提交的时候会释放锁。具体加锁的逻辑我们后面在分析。另外所有的锁定读都是当前读，也就是读取当前记录的最新版本，不会利用 undolog 读取镜像。另外所有的 insert、update、delete 操作也是当前读，update、delete 会在更新之前进行一次当前读，然后加锁，而 insert 因为会触发唯一索引检测，也会包含一个当前读。</p>
+<h2 id="自增长锁"><a href="#自增长锁" class="headerlink" title="自增长锁"></a>自增长锁</h2><p>在主键设置为自增长的情况下，该表会维护一个计数器，每个插入操作都会先获取这个计数器的当前值，然后加 1 作为新的主键，显然这个计数器是一个共享变量需要加排他锁，而这个锁不需要等到事物提交后才释放，他在 sql 语句插入完成后就会释放，新版本的 innoDB 采用互斥量来实现提高了插入速度</p>
+<h2 id="锁的问题"><a href="#锁的问题" class="headerlink" title="锁的问题"></a>锁的问题</h2><ul>
+<li>脏读</li>
+<li>不可重复读</li>
+<li>丢失更新</li>
+<li>死锁和热点</li>
+</ul>
+<p>脏读是指事务A对某个数据页进行了更改，但是并没有提交，这个数据就成为脏数据，这里稍微和上面提到的脏页做下区分，脏页是指内存中已经更改但是还没有刷新到磁盘的数据，脏页是正常的，而脏读是指一个事物读取了另外一个事物没有提交的数据，如果另外一个数据对这个数据又进行了更改，则出现数据一致性，脏读违背了数据库的隔离性。脏读目前只能出现在读未提交这个隔离级别下，目前 MySQL 默认的隔离级别为可重复读</p>
+<p>不可重复读是指一个事务先后两次读取同一条记录的结果不一样，因为第二次读取的时候可能其他事务已经进行更改并提交，不可重复读只发生在隔离级别为读未提交和读已提交里。</p>
+<p>丢失更新是指两个事务同时更新某一条记录，导致其中一个事务更新失效，理论上任何一个隔离级别都不会发生丢失更新，因为更新的时候会加上排他锁，但是应用中却经常发生，例如一个计数器应用，事务A查询计数器的值 v=5,在内存中加 1 写入到数据库，在写入之前另外一个事务读取到计数器的值 v=5 ，然后加 1 写入数据库，这样本来应该为 7 ， 现在却是 6 ，这是因为我们是先读取在写入，而读取和写入对数据库而言是两个操作，并不是一个原子操作，这里可以通过把查询的记录加上排他锁 select for update 来防止丢失更新现象。当然这里直接将 sql 改为 v = v + 1 也可以</p>
+<p>死锁是指两个或两个以上事务因争夺资源而互相等待的情况，InnoDB 提供了死锁检测和超时机制来防止死锁的影响，死锁检测是非常耗 CPU 的，当很多个事务同时竞争同一个资源的时候，例如抢购的时候扣商品份额，或者支付的时候所有的订单都会用到一个公共账户，同一个资源竞争的事务越多，死锁检测越耗 CPU 。为了减少这种情况的影响，建议尽量在业务层减少热点的产生，例如将热点账户拆分成若个个同样功能的账户，万一发生高并发，建议在应用层做限流或者排队，当然也可以在数据库层做排队，这个需要修改数据库源码。</p>
+<h2 id="加锁的流程"><a href="#加锁的流程" class="headerlink" title="加锁的流程"></a>加锁的流程</h2><p>InnoDB的加锁过程比较复杂，大致可以记住一个原则是：将所有扫描到的记录都加锁，范围查询会加间隙锁，然后加锁过程按照两阶段锁 2PL 来实现，也就是先加锁，然后所有的锁在事物提交的时候释放。怎么加锁和数据库的隔离级别有关，然而我们一般很少更改 MySQL 的隔离级别，所以下面我们均按照可重复读的隔离级别进行分析，另外一个因素是查询条件中是否包含索引，是主键索引还是普通索引，是否是唯一索引等。我们以下面这条 sql 语句来分析加锁过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from trade_order where order_no = &apos;201912102322&apos; for update;</span><br></pre></td></tr></table></figure></p>
+<p>order_no 是主键索引 ，这种情况将在主键索引上的 order_no = ‘201912102322’ 这条记录上加排他锁</p>
+<p>order_no 是普通索引，并且是唯一索引。 将会对 普通索引上对应的一条记录加排他锁，对主键索引上对应的记录加排他锁</p>
+<p>order_no 是普通索引，并且不是唯一索引 将会对 普通索引上 order_no = ‘201912102322’  一条或者多条记录加锁，并且对这些记录对应的主键索引上的记录加锁。这里除了加上行锁外，还会加上间隙锁，防止其他事物插入　order_no = ‘201912102322’ 的记录，然而如果是唯一索引就不需要间隙锁，行锁就可以</p>
+<p>order_no 上没有索引，innoDB 将会在主键索引上全表扫描，这里并没有加表锁，而是将所有的记录都会加上行级排他锁，而实际上 innoDB 内部做了优化，当扫描到一行记录后发现不匹配就会把锁给释放，当然这个违背了 2PL 原则在事务提交的时候释放。这里除了对记录进行加锁，还会对每两个记录之间的间隙加锁，所以最终将会保存所有的间隙锁和 order_no = ‘201912102322’ 的行锁。</p>
+<p>order_no = ‘201912102322’ 这条记录不存在的情况下，如果order_no 是主键索引，则会加一个间隙锁，而这个间隙是主键索引中 order_no 小于 201912102322 的第一条记录到大于  201912102322 的第一条记录。试想一下如果不加间隙锁，如果其他事物插入了一条 order_no = ‘201912102322’ 的记录，由于 select for update 是当前读，即使上面那个事物没有提交，如果在该事物中重新查询一次就会发生幻读。如果没有索引，则对扫描到的所有记录和间隙都加锁，如果不匹配行锁将会释放只剩下间隙锁。回忆一下上面讲的数据页的结果中又一个最大记录和最小记录，Infimum 和 Supremum Record，这两个记录在加间隙锁的时候就会用到</p>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>InnoDB 存储引擎的事务需完全符合 ACID 特性。下面我们一起看下 InnoDB 做了哪些事情。</p>
+<ul>
+<li><p>原子性 : 是指一个事务内的所有操作要么全部成功要么全部失败，数据库中将 redolog 和 binlog 的写入采用两阶段提交就是为了保证事务的原子性。另外由于 InnodDB 是按页进行存储的，每个页大小为 16kb 而操作系统的一般以 4KB 为一页进行读取，所以可能出现一个 InnoDB 的数据页只写了一部分的情况。而 InnoDB 为了防止这种情况的发生采用双写机制，除了写入磁盘上的数据页还会在共享空间中写入。而 redolog 按块存储，每个块 512 字节，正好和扇区大小一样所以，可以保证原子性，不需要进行双写。</p>
+</li>
+<li><p>一致性 ：保证磁盘和缓存的数据一致，binlog 数据和 主库中的数据一致。</p>
+</li>
+<li><p>隔离性 ：默认为可重复读，采用 undolog 来实现。</p>
+</li>
+<li><p>持久性 ：事务一旦提交，其结果就是永久的，redolog 需要在事务提交前进行刷盘，磁盘采用 RAID 等</p>
 </li>
 </ul>
 
@@ -445,10 +536,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ios</a>
               </li>
              
@@ -461,7 +548,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,7 +560,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,11 +572,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人隐私</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
