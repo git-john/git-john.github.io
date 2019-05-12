@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="johnkang&#39;s blog">
 <meta property="og:description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-07T14:36:21.837Z">
+<meta property="og:updated_time" content="2019-04-24T15:31:44.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解java垃圾回收">
 <meta name="twitter:description" content="我的理解 jvm的组成部分及其作用： 主要由四部分组成：类加载器+运行时数据区+指令引擎+本地接口库。作用是java执行的一个串行流程，首先类加载器需要将java编译文件class加载到内存中，这个内存就是java运行时数据区，接下来执行引擎会将字节码翻译成系统指令交由CPU执行，这个执行过程需要调用其他语言写的本地接口。这就是他们的作用。   jvm运行时数据区的理解： jvm运行时数据区包括5">
@@ -235,7 +235,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="常用调优操作"><a href="#常用调优操作" class="headerlink" title="常用调优操作"></a>常用调优操作</h1><p>#相关术语</p>
+<h1 id="JVM调优"><a href="#JVM调优" class="headerlink" title="JVM调优"></a>JVM调优</h1><p>#相关术语</p>
 <ul>
 <li>CMS垃圾收集算法</li>
 <li>ParNew垃圾收集算法</li>
@@ -476,11 +476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,15 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,11 +508,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
